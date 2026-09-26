@@ -3,9 +3,9 @@ import { useSale } from '../../context/SaleContext';
 import { triggerSaleCelebration } from '../ui/Confetti';
 import { Zap, Terminal, Server, Bot, CheckCircle2, Sparkles, Lock, ArrowRight } from 'lucide-react';
 
-export const ThunderCircuitUnlock: React.FC = () => {
+export const ThunderCircuitUnlock = () => {
   const { unlockOffer } = useSale();
-  const [activeNodes, setActiveNodes] = useState<number[]>([1]); // Node 1 active by default
+  const [activeNodes, setActiveNodes] = useState([1]); // Node 1 active by default
   const [isCharging, setIsCharging] = useState(false);
 
   const nodes = [
@@ -21,7 +21,7 @@ export const ThunderCircuitUnlock: React.FC = () => {
       id: 2,
       title: 'Distributed System Node',
       icon: Server,
-      color: 'from-blue-400 to-indigo-500',
+      color: 'from-purple-400 to-indigo-500',
       desc: 'High-Concurrency Kafka & Redis',
       code: 'await redis.setex("surge", 86400, 0.40);'
     },
@@ -35,7 +35,7 @@ export const ThunderCircuitUnlock: React.FC = () => {
     }
   ];
 
-  const handleToggleNode = (id: number) => {
+  const handleToggleNode = (id) => {
     if (activeNodes.includes(id)) return;
 
     const newNodes = [...activeNodes, id];
@@ -72,11 +72,11 @@ export const ThunderCircuitUnlock: React.FC = () => {
             <Zap className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
             THUNDER OVERDRIVE CIRCUIT CHARGE
           </span>
-          <span className="text-indigo-300 font-bold">{chargePercentage}% UNLOCKED</span>
+          <span className="text-purple-300 font-bold">{chargePercentage}% UNLOCKED</span>
         </div>
-        <div className="w-full h-3 rounded-full bg-slate-800/80 border border-slate-700/60 overflow-hidden p-0.5">
+        <div className="w-full h-3 rounded-full bg-zinc-800/80 border border-zinc-700/60 overflow-hidden p-0.5">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-amber-500 via-indigo-500 to-cyan-400 transition-all duration-500 shadow-lg shadow-cyan-500/50"
+            className="h-full rounded-full bg-gradient-to-r from-amber-500 via-purple-500 to-cyan-400 transition-all duration-500 shadow-lg shadow-cyan-500/50"
             style={{ width: `${chargePercentage}%` }}
           />
         </div>
@@ -84,7 +84,7 @@ export const ThunderCircuitUnlock: React.FC = () => {
 
       {/* Nodes Interactive Grid */}
       <p className="text-xs text-slate-300 mb-4 text-center">
-        ⚡ Click each tech module to connect the Strike Overdrive Grid & unlock <span className="text-amber-300 font-bold">40% OFF</span>:
+        ⚡ Click each tech module to connect the Strike Overdrive Grid &amp; unlock <span className="text-amber-300 font-bold">40% OFF</span>:
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full mb-6">
@@ -98,8 +98,8 @@ export const ThunderCircuitUnlock: React.FC = () => {
               onClick={() => handleToggleNode(node.id)}
               className={`p-4 rounded-xl text-left border transition-all relative overflow-hidden group cursor-pointer ${
                 isNodeActive
-                  ? 'bg-slate-900/90 border-indigo-500/60 shadow-lg shadow-indigo-950/50'
-                  : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-70 hover:opacity-100'
+                  ? 'bg-zinc-900/90 border-purple-500/60 shadow-lg shadow-purple-950/50'
+                  : 'bg-zinc-950/60 border-zinc-800 hover:border-zinc-700 opacity-70 hover:opacity-100'
               }`}
             >
               <div className="flex items-start justify-between mb-2">
@@ -107,7 +107,7 @@ export const ThunderCircuitUnlock: React.FC = () => {
                   className={`w-9 h-9 rounded-lg flex items-center justify-center ${
                     isNodeActive
                       ? `bg-gradient-to-br ${node.color} text-black font-bold shadow-md`
-                      : 'bg-slate-800 text-slate-400'
+                      : 'bg-zinc-800 text-slate-400'
                   }`}
                 >
                   <IconComponent className="w-5 h-5" />
@@ -122,7 +122,7 @@ export const ThunderCircuitUnlock: React.FC = () => {
               <h4 className="font-semibold text-sm text-slate-100 mb-1">{node.title}</h4>
               <p className="text-[11px] text-slate-400 mb-2 leading-tight">{node.desc}</p>
 
-              <div className="p-1.5 rounded bg-slate-950 border border-slate-800/80 font-mono text-[10px] text-indigo-300 truncate">
+              <div className="p-1.5 rounded bg-black border border-zinc-800/80 font-mono text-[10px] text-purple-300 truncate">
                 {node.code}
               </div>
 
@@ -142,7 +142,7 @@ export const ThunderCircuitUnlock: React.FC = () => {
         <button
           onClick={handleQuickUnlock}
           disabled={isCharging}
-          className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 hover:from-amber-400 hover:to-purple-500 text-white font-bold text-sm shadow-xl shadow-indigo-950/60 transition-all flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-purple-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-purple-950/60 transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <Sparkles className="w-4 h-4 text-amber-300 animate-spin" style={{ animationDuration: '4s' }} />
           <span>{isCharging ? 'Synthesizing Grant...' : 'Instant 1-Click Code Unlock'}</span>

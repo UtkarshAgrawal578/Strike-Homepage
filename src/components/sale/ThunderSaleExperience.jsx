@@ -15,11 +15,10 @@ import {
   Flame,
   CheckCircle,
   Clock,
-  Layers,
   Percent
 } from 'lucide-react';
 
-export const ThunderSaleExperience: React.FC = () => {
+export const ThunderSaleExperience = () => {
   const {
     isModalOpen,
     closeSaleModal,
@@ -43,10 +42,9 @@ export const ThunderSaleExperience: React.FC = () => {
     setTimeout(() => setCopied(false), 3000);
   };
 
-  const handleApplyToPlan = (planTarget: string) => {
+  const handleApplyToPlan = (planTarget) => {
     handleCopy();
     closeSaleModal();
-    // Smooth scroll to pricing section
     const targetElement = document.getElementById(planTarget || 'pricing');
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
@@ -57,23 +55,23 @@ export const ThunderSaleExperience: React.FC = () => {
     <div className="fixed inset-0 z-[99990] flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
       {/* Dark Blur Backdrop */}
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fadeIn"
+        className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity animate-fadeIn"
         onClick={closeSaleModal}
       />
 
       {/* Cyberpunk HUD Window */}
-      <div className="relative w-full max-w-4xl bg-[#090d16] border border-indigo-500/40 rounded-2xl sm:rounded-3xl shadow-2xl shadow-indigo-950/80 overflow-hidden my-auto text-slate-100 z-10 animate-scaleUp">
+      <div className="relative w-full max-w-4xl bg-[#0b0b0e] border border-purple-500/40 rounded-2xl sm:rounded-3xl shadow-2xl shadow-purple-950/80 overflow-hidden my-auto text-slate-100 z-10 animate-scaleUp">
         {/* Glowing Top Ambient Beam */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 via-indigo-500 to-cyan-400" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 via-purple-500 to-cyan-400" />
         
         {/* Background Ambient Glows */}
-        <div className="absolute -top-32 -left-32 w-80 h-80 bg-indigo-600/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute -top-32 -left-32 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-amber-600/20 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Modal Header */}
-        <div className="px-6 py-5 sm:px-8 border-b border-slate-800/80 flex items-center justify-between relative bg-slate-900/50 backdrop-blur-lg">
+        <div className="px-6 py-5 sm:px-8 border-b border-zinc-800 flex items-center justify-between relative bg-zinc-900/50 backdrop-blur-lg">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-indigo-600 flex items-center justify-center text-black font-black shadow-lg shadow-indigo-500/30 shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-purple-600 flex items-center justify-center text-black font-black shadow-lg shadow-purple-500/30 shrink-0">
               <Zap className="w-5 h-5 fill-current text-slate-950" />
             </div>
             <div>
@@ -93,7 +91,7 @@ export const ThunderSaleExperience: React.FC = () => {
 
           <button
             onClick={closeSaleModal}
-            className="w-9 h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-xl bg-zinc-800/80 hover:bg-zinc-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
             aria-label="Close sale modal"
           >
             <X className="w-5 h-5" />
@@ -106,12 +104,12 @@ export const ThunderSaleExperience: React.FC = () => {
           {!isUnlocked && !remainingTime.isExpired ? (
             <div>
               <div className="text-center max-w-xl mx-auto mb-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-xs font-mono mb-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 text-xs font-mono mb-3">
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>INTERACTIVE OVERDRIVE ACCESS</span>
                 </div>
                 <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-white mb-2">
-                  Unlock <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-indigo-300 to-cyan-400">40% Instant Grant</span> on All Plans
+                  Unlock <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-400">40% Instant Grant</span> on All Plans
                 </h3>
                 <p className="text-sm text-slate-300">
                   Connect the 3 core pillars of modern engineering to synthesize your verified VIP coupon code and discounted tuition.
@@ -130,7 +128,7 @@ export const ThunderSaleExperience: React.FC = () => {
                   <p className="text-xs text-rose-400/80 mt-1">The countdown has reached zero. Standard pricing has been restored.</p>
                 </div>
               ) : (
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-5 rounded-2xl bg-gradient-to-br from-indigo-950/60 via-slate-900/90 to-purple-950/50 border border-indigo-500/30">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-5 rounded-2xl bg-gradient-to-br from-purple-950/60 via-zinc-900/90 to-indigo-950/50 border border-purple-500/30">
                   <div>
                     <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold border border-emerald-500/20 mb-2">
                       <CheckCircle className="w-3.5 h-3.5" />
@@ -140,7 +138,7 @@ export const ThunderSaleExperience: React.FC = () => {
                       Flat <span className="text-amber-300">40% Instant Discount</span>
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                      Applicable on <strong className="text-white">Strike Ultra</strong>, <strong className="text-white">Strike Plus</strong> & <strong className="text-white">Thunder 100 Batch</strong>.
+                      Applicable on <strong className="text-white">Strike Ultra</strong>, <strong className="text-white">Strike Plus</strong> &amp; <strong className="text-white">Thunder 100 Batch</strong>.
                     </p>
                   </div>
 
@@ -156,7 +154,7 @@ export const ThunderSaleExperience: React.FC = () => {
               )}
 
               {/* Coupon Box */}
-              <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-700/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="p-5 rounded-2xl bg-zinc-900/80 border border-zinc-700/60 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
                     <Percent className="w-6 h-6" />
@@ -169,7 +167,7 @@ export const ThunderSaleExperience: React.FC = () => {
                       </span>
                       {isCouponApplied && (
                         <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[11px] font-bold border border-emerald-500/30">
-                          Active & Applied
+                          Active &amp; Applied
                         </span>
                       )}
                     </div>
@@ -183,13 +181,13 @@ export const ThunderSaleExperience: React.FC = () => {
                     className={`flex-1 sm:flex-none px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer ${
                       copied || isCouponApplied
                         ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-950/60'
-                        : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-950/60'
+                        : 'bg-purple-600 hover:bg-purple-500 text-white shadow-lg shadow-purple-950/60'
                     } ${remainingTime.isExpired ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     {copied ? (
                       <>
                         <Check className="w-4 h-4" />
-                        <span>Code Copied & Applied!</span>
+                        <span>Code Copied &amp; Applied!</span>
                       </>
                     ) : isCouponApplied ? (
                       <>
@@ -199,7 +197,7 @@ export const ThunderSaleExperience: React.FC = () => {
                     ) : (
                       <>
                         <Copy className="w-4 h-4" />
-                        <span>Copy & Apply 40% OFF</span>
+                        <span>Copy &amp; Apply 40% OFF</span>
                       </>
                     )}
                   </button>
@@ -220,7 +218,7 @@ export const ThunderSaleExperience: React.FC = () => {
                   {/* Card 1 */}
                   <div
                     onClick={() => handleApplyToPlan('thunder-section')}
-                    className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-all cursor-pointer group"
+                    className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-amber-500/40 transition-all cursor-pointer group"
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-mono text-amber-400 font-bold">⚡ THUNDER 100</span>
@@ -236,18 +234,18 @@ export const ThunderSaleExperience: React.FC = () => {
                   {/* Card 2 */}
                   <div
                     onClick={() => handleApplyToPlan('pricing')}
-                    className="p-4 rounded-xl bg-slate-900/60 border border-indigo-500/40 hover:border-indigo-400 transition-all cursor-pointer group relative overflow-hidden"
+                    className="p-4 rounded-xl bg-zinc-900/60 border border-purple-500/40 hover:border-purple-400 transition-all cursor-pointer group relative overflow-hidden"
                   >
-                    <div className="absolute -right-8 top-2 bg-indigo-500 text-black text-[9px] font-black px-8 py-0.5 rotate-45">
+                    <div className="absolute -right-8 top-2 bg-purple-500 text-white text-[9px] font-black px-8 py-0.5 rotate-45">
                       BEST VALUE
                     </div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-mono text-indigo-300 font-bold">💎 STRIKE ULTRA</span>
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-bold">SAVE ₹6,400</span>
+                      <span className="text-xs font-mono text-purple-300 font-bold">💎 STRIKE ULTRA</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold">SAVE ₹6,400</span>
                     </div>
                     <p className="text-xs text-slate-300 font-medium line-clamp-1">All Live Bootcamps + Mentorship</p>
                     <div className="mt-3 flex items-baseline gap-2">
-                      <span className="text-lg font-black text-indigo-200">₹9,599</span>
+                      <span className="text-lg font-black text-purple-200">₹9,599</span>
                       <span className="text-xs text-slate-500 line-through">₹15,999</span>
                     </div>
                   </div>
@@ -255,7 +253,7 @@ export const ThunderSaleExperience: React.FC = () => {
                   {/* Card 3 */}
                   <div
                     onClick={() => handleApplyToPlan('pricing')}
-                    className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 transition-all cursor-pointer group"
+                    className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-cyan-500/40 transition-all cursor-pointer group"
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-mono text-cyan-400 font-bold">📦 STRIKE PLUS</span>
@@ -271,7 +269,7 @@ export const ThunderSaleExperience: React.FC = () => {
               </div>
 
               {/* Bonus Benefits */}
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
+              <div className="p-4 rounded-xl bg-black border border-zinc-800">
                 <p className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
                   <Gift className="w-3.5 h-3.5 text-amber-400" />
                   Additional Bonuses Included Free With Thunder Grant:
@@ -298,12 +296,12 @@ export const ThunderSaleExperience: React.FC = () => {
                   onClick={closeSaleModal}
                   className="text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
                 >
-                  Continue browsing website & explore courses →
+                  Continue browsing website &amp; explore courses →
                 </button>
 
                 <button
                   onClick={() => handleApplyToPlan('pricing')}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-indigo-950/60 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-purple-600 hover:from-amber-400 hover:to-purple-500 text-white font-bold text-sm shadow-xl shadow-purple-950/60 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Go to Checkout with Discount</span>
                   <ArrowRight className="w-4 h-4" />

@@ -1,6 +1,4 @@
-import { Testimonial, FAQItem } from '../types';
-
-export const REVIEWS_DATA: Testimonial[] = [
+export const REVIEWS_DATA = [
   {
     id: '1',
     name: 'Aman Sharma',
@@ -75,35 +73,29 @@ export const REVIEWS_DATA: Testimonial[] = [
   }
 ];
 
-export const FAQS_DATA: FAQItem[] = [
+export const FAQS_DATA = [
   {
-    category: 'general',
-    question: 'What makes STRIKE courses different from other platforms?',
-    answer: 'Strike focuses strictly on First Principles and industry-grade depth. Every concept is taught from foundational memory models up to distributed microservice scale by Rohit Negi (Ex-Uber, AIR 202). You write real production code, deploy live cloud infrastructure, and build autonomous systems instead of toy projects.'
+    question: 'What programming languages can I learn on the platform?',
+    answer: 'Strike offers comprehensive courses in JavaScript, Python, Java, C++, React, Node.js, and many more. We also provide courses on Data Structures, Algorithms, System Design, and Full-Stack Development with hands-on projects.'
   },
   {
-    category: 'courses',
-    question: 'What is included in the "Thunder: 100 Days of Code" bootcamp?',
-    answer: 'Thunder is our flagship live program covering 100+ live sessions spanning Modern Frontend (React 19, TypeScript), Distributed Backend (Node.js, Postgres, Redis, Kafka), System Design (HLD & LLD), DevOps (Docker, K8s, AWS), and FAANG interview preparation.'
+    question: 'What will I learn in the DSA + Gen AI course?',
+    answer: "This course covers Data Structures & Algorithms from basics to advanced level, along with Generative AI fundamentals. You'll learn arrays, trees, graphs, dynamic programming, and how to build AI-powered applications using modern frameworks. The course includes 200+ problems, live doubt sessions, and real-world AI projects."
   },
   {
-    category: 'courses',
-    question: 'Do I get lifetime access to recordings and lecture notes?',
-    answer: 'Yes! Even for live batches like Thunder, all session recordings in crisp 1080p, detailed code repositories, architectural diagrams, lecture slides, and cheat sheets remain accessible in your Strike dashboard for lifetime revision.'
+    question: 'Do I need prior coding experience to join DSA + Gen AI course?',
+    answer: "Basic programming knowledge in any language (C++, Java, or Python) is recommended. If you're completely new, we suggest starting with our beginner programming course first. The DSA + Gen AI course is designed for learners who know basic syntax and want to master algorithms and AI together."
   },
   {
-    category: 'placements',
-    question: 'How do 1-on-1 resume reviews and mock interviews work?',
-    answer: 'Students enrolled in Strike Ultra or flagship bootcamps can book 1-on-1 slots with senior engineers from Google, Uber, Amazon, and Microsoft. You receive line-by-line resume optimization, ATS scoring, and realistic 60-minute technical bar-raiser mocks with actionable feedback.'
+    question: 'How is Gen AI integrated with DSA in this course?',
+    answer: "You'll learn how AI models use data structures internally, optimize algorithms for AI applications, and build Gen AI projects like chatbots, code generators, and recommendation systems. We teach practical AI integration with strong DSA fundamentals, preparing you for modern tech roles."
   },
   {
-    category: 'pricing',
-    question: 'What is the difference between Strike Plus and Strike Ultra?',
-    answer: 'Strike Plus gives you complete access to all recorded courses and the Coder Arena problem library. Strike Ultra includes everything in Plus, PLUS all current and upcoming LIVE bootcamps (like Thunder 100 and GenAI), 1-on-1 mock interviews, resume reviews, and placement referral support.'
+    question: 'Will this course help me crack product-based company interviews?',
+    answer: 'Absolutely! The course is specifically designed for interview preparation. You will solve 200+ problems from FAANG interview archives, learn First Principles problem-solving approach, and get weekly mock interviews. Our students have cracked interviews at Google, Microsoft, Amazon, and top startups.'
   },
   {
-    category: 'pricing',
-    question: 'How does the Thunder Overdrive Hackathon discount work?',
-    answer: 'During the Thunder 6.0 launch window, you can unlock an instant 40% OFF coupon code (THUNDER40) applicable to all single courses and multi-year Strike Plus/Ultra memberships with live countdown lock.'
+    question: 'How long does it take to complete the DSA + Gen AI course?',
+    answer: 'The course is designed to be completed in 6-8 months with consistent daily practice. However, you get lifetime access to all course materials, so you can learn at your own pace. Most students spend 2-3 hours daily on lectures, practice problems, and projects to stay on track.'
   }
 ];

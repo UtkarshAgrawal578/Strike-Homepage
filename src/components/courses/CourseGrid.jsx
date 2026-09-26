@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { COURSES_DATA } from '../../data/courses';
-import { Course } from '../../types';
 import { CourseCard } from './CourseCard';
 import { SyllabusModal } from './SyllabusModal';
-import { BookOpen, Sparkles, Filter } from 'lucide-react';
+import { BookOpen, Sparkles } from 'lucide-react';
 import { useSale } from '../../context/SaleContext';
 
-export const CourseGrid: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedCourseForSyllabus, setSelectedCourseForSyllabus] = useState<Course | null>(null);
+export const CourseGrid = () => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCourseForSyllabus, setSelectedCourseForSyllabus] = useState(null);
   const { isCouponApplied } = useSale();
 
   const categories = [
-    { id: 'all', label: 'All Programs' },
+    { id: 'all', label: 'All Courses' },
     { id: 'bootcamp', label: 'Live Bootcamps ⚡' },
     { id: 'dsa', label: 'DSA & C++' },
     { id: 'genai', label: 'Generative AI & Agents' },
@@ -24,7 +23,7 @@ export const CourseGrid: React.FC = () => {
     : COURSES_DATA.filter((c) => c.category === selectedCategory);
 
   return (
-    <section id="courses" className="py-20 relative bg-[#07090e] border-b border-white/[0.06]">
+    <section id="courses" className="py-20 relative bg-[#000000] border-b border-white/[0.06]">
       {/* Syllabus Modal Container */}
       <SyllabusModal
         course={selectedCourseForSyllabus}
@@ -35,12 +34,12 @@ export const CourseGrid: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-mono mb-3">
-              <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
-              <span>PRODUCTION-READY CURRICULUM</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-mono mb-3">
+              <BookOpen className="w-3.5 h-3.5 text-purple-400" />
+              <span>PRODUCTION-READY COURSES</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-black text-white">
-              Explore All <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-indigo-300 to-cyan-400">Strike Programs</span>
+              Explore All <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-400">Strike Courses</span>
             </h2>
             <p className="text-sm text-slate-400 mt-2 max-w-xl">
               From zero programming to distributed backend architectures and autonomous agent swarms. Every line of code written live from first principles.
@@ -63,8 +62,8 @@ export const CourseGrid: React.FC = () => {
               onClick={() => setSelectedCategory(cat.id)}
               className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory === cat.id
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-950/60'
-                  : 'bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-950/60'
+                  : 'bg-zinc-900/80 hover:bg-zinc-800 text-slate-400 hover:text-slate-200 border border-zinc-800'
               }`}
             >
               {cat.label}

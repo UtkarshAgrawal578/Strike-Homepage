@@ -15,10 +15,10 @@ import { FloatingSaleDock } from './components/sale/FloatingSaleDock';
 import { JudgeTestControls } from './components/sale/JudgeTestControls';
 import { Toast } from './components/ui/Toast';
 
-export const App: React.FC = () => {
+export function App() {
   return (
     <SaleProvider>
-      <div className="min-h-screen bg-[#07090e] text-slate-100 flex flex-col relative selection:bg-indigo-500 selection:text-white">
+      <div className="min-h-screen bg-[#000000] text-white flex flex-col relative selection:bg-purple-600 selection:text-white">
         {/* Navigation Bar */}
         <Navbar />
 
@@ -45,6 +45,6 @@ export const App: React.FC = () => {
       </div>
     </SaleProvider>
   );
-};
+}
 
 export default App;

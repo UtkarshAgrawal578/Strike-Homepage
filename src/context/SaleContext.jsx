@@ -1,18 +1,4 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { SaleState } from '../types';
-
-interface SaleContextType extends SaleState {
-  openSaleModal: () => void;
-  closeSaleModal: () => void;
-  unlockOffer: () => void;
-  copyAndApplyCoupon: () => void;
-  removeCoupon: () => void;
-  forceExpireTimer: () => void;
-  resetTimer: (hours?: number) => void;
-  toastMessage: string | null;
-  clearToast: () => void;
-  showToast: (msg: string) => void;
-}
 
 const STORAGE_KEYS = {
   END_TIME: 'strike_thunder_sale_end_time',
@@ -25,21 +11,21 @@ const DEFAULT_DURATION_HOURS = 48;
 const COUPON_CODE = 'THUNDER40';
 const DISCOUNT_PERCENT = 40;
 
-const SaleContext = createContext<SaleContextType | undefined>(undefined);
+const SaleContext = createContext(null);
 
-export const SaleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
+export const SaleProvider = ({ children }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(() => {
     return localStorage.getItem(STORAGE_KEYS.UNLOCKED) === 'true';
   });
-  const [isCouponApplied, setIsCouponApplied] = useState<boolean>(() => {
+  const [isCouponApplied, setIsCouponApplied] = useState(() => {
     return localStorage.getItem(STORAGE_KEYS.APPLIED) === 'true';
   });
-  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
 
   // Initialize or retrieve persistent target end time
-  const [targetEndTime, setTargetEndTime] = useState<number>(() => {
+  const [targetEndTime, setTargetEndTime] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.END_TIME);
     if (saved) {
       const parsed = parseInt(saved, 10);
@@ -53,12 +39,7 @@ export const SaleProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return newTarget;
   });
 
-  const [remainingTime, setRemainingTime] = useState<{
-    hours: number;
-    minutes: number;
-    seconds: number;
-    isExpired: boolean;
-  }>({
+  const [remainingTime, setRemainingTime] = useState({
     hours: 48,
     minutes: 0,
     seconds: 0,
@@ -66,7 +47,7 @@ export const SaleProvider: React.FC<{ children: React.ReactNode }> = ({ children
   });
 
   // Calculate remaining countdown based on persistent timestamp
-  const calculateRemaining = useCallback((targetMs: number) => {
+  const calculateRemaining = useCallback((targetMs) => {
     const now = Date.now();
     const diff = targetMs - now;
 
@@ -94,7 +75,7 @@ export const SaleProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => clearInterval(interval);
   }, [targetEndTime, calculateRemaining]);
 
-  // Subtle auto-discovery trigger on first visit after 4 seconds if not opened yet
+  // Subtle auto-discovery trigger on first visit after 3.5 seconds
   useEffect(() => {
     const hasDismissed = localStorage.getItem(STORAGE_KEYS.DISMISSED_INITIAL);
     if (!hasDismissed && !remainingTime.isExpired) {
@@ -106,7 +87,7 @@ export const SaleProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [remainingTime.isExpired]);
 
-  const showToast = (msg: string) => {
+  const showToast = (msg) => {
     setToastMessage(msg);
   };
 
@@ -160,7 +141,7 @@ export const SaleProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   // Hackathon tester helper: Reset timer to fresh 48 hours
-  const resetTimer = (hours: number = DEFAULT_DURATION_HOURS) => {
+  const resetTimer = (hours = DEFAULT_DURATION_HOURS) => {
     const newTarget = Date.now() + hours * 60 * 60 * 1000;
     setTargetEndTime(newTarget);
     localStorage.setItem(STORAGE_KEYS.END_TIME, newTarget.toString());

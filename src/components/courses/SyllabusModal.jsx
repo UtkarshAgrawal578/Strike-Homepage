@@ -1,14 +1,8 @@
 import React from 'react';
-import { Course } from '../../types';
-import { X, CheckCircle, Clock, BookOpen, Sparkles } from 'lucide-react';
+import { X, CheckCircle, BookOpen, Sparkles } from 'lucide-react';
 import { useSale } from '../../context/SaleContext';
 
-interface SyllabusModalProps {
-  course: Course | null;
-  onClose: () => void;
-}
-
-export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose }) => {
+export const SyllabusModal = ({ course, onClose }) => {
   const { isCouponApplied, discountPercentage } = useSale();
 
   if (!course) return null;
@@ -23,16 +17,16 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
     <div className="fixed inset-0 z-[99995] flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-2xl bg-[#090d16] border border-indigo-500/30 rounded-2xl sm:rounded-3xl shadow-2xl shadow-indigo-950/80 overflow-hidden my-auto text-slate-100 z-10 animate-scaleUp">
+      <div className="relative w-full max-w-2xl bg-[#0b0b0e] border border-purple-500/30 rounded-2xl sm:rounded-3xl shadow-2xl shadow-purple-950/80 overflow-hidden my-auto text-slate-100 z-10 animate-scaleUp">
         {/* Header */}
-        <div className="p-6 border-b border-slate-800 flex items-start justify-between gap-4 bg-slate-900/50">
+        <div className="p-6 border-b border-zinc-800 flex items-start justify-between gap-4 bg-zinc-900/50">
           <div>
             <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-1">
-              Curriculum & Learning Roadmap
+              Curriculum &amp; Learning Roadmap
             </span>
             <h3 className="text-xl font-bold text-white leading-tight">
               {course.title}
@@ -42,7 +36,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors"
+            className="p-2 rounded-xl bg-zinc-800 text-slate-400 hover:text-white hover:bg-zinc-700 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -52,15 +46,15 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
         <div className="p-6 max-h-[70vh] overflow-y-auto space-y-6 custom-scrollbar">
           <div>
             <h4 className="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-indigo-400" />
+              <BookOpen className="w-4 h-4 text-purple-400" />
               Syllabus Modules Breakdown
             </h4>
 
             <div className="space-y-4">
               {course.syllabusHighlights.map((mod, i) => (
-                <div key={i} className="p-4 rounded-xl bg-slate-900/70 border border-slate-800">
+                <div key={i} className="p-4 rounded-xl bg-zinc-900/70 border border-zinc-800">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono font-bold text-indigo-400">
+                    <span className="text-xs font-mono font-bold text-purple-400">
                       {mod.week}
                     </span>
                     <span className="text-xs font-semibold text-slate-200">
@@ -68,7 +62,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 pt-3 border-t border-slate-800/80">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 pt-3 border-t border-zinc-800/80">
                     {mod.topics.map((topic, tIdx) => (
                       <div key={tIdx} className="flex items-center gap-2 text-xs text-slate-300">
                         <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -82,7 +76,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
           </div>
 
           {/* Key Features */}
-          <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
+          <div className="p-4 rounded-xl bg-zinc-950 border border-zinc-800">
             <h5 className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2.5">
               Course Inclusions:
             </h5>
@@ -98,7 +92,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
         </div>
 
         {/* Footer CTA */}
-        <div className="p-5 border-t border-slate-800 bg-slate-900/80 flex items-center justify-between">
+        <div className="p-5 border-t border-zinc-800 bg-zinc-900/80 flex items-center justify-between">
           <div>
             <span className="text-[10px] text-slate-400 font-mono block">ENROLLMENT TUITION</span>
             <div className="flex items-baseline gap-2">
@@ -116,7 +110,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
           <a
             href="#pricing"
             onClick={onClose}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 text-slate-950 font-bold text-sm hover:brightness-110 transition-all cursor-pointer"
+            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-purple-600 text-white font-bold text-sm hover:brightness-110 transition-all cursor-pointer"
           >
             Enroll Now
           </a>

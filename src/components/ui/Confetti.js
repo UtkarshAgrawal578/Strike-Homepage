@@ -1,14 +1,13 @@
 import confetti from 'canvas-confetti';
 
 export const triggerSaleCelebration = () => {
-  // Fire dual side cannons
   const count = 200;
   const defaults = {
     origin: { y: 0.7 },
     zIndex: 9999,
   };
 
-  function fire(particleRatio: number, opts: confetti.Options) {
+  function fire(particleRatio, opts) {
     confetti({
       ...defaults,
       ...opts,
@@ -19,7 +18,7 @@ export const triggerSaleCelebration = () => {
   fire(0.25, {
     spread: 26,
     startVelocity: 55,
-    colors: ['#6366f1', '#a855f7', '#06b6d4'],
+    colors: ['#a855f7', '#6366f1', '#06b6d4'],
   });
   fire(0.2, {
     spread: 60,
@@ -34,7 +33,7 @@ export const triggerSaleCelebration = () => {
     spread: 120,
     startVelocity: 25,
     decay: 0.92,
-    colors: ['#ffffff', '#818cf8', '#38bdf8'],
+    colors: ['#ffffff', '#a855f7', '#38bdf8'],
   });
   fire(0.1, {
     spread: 120,

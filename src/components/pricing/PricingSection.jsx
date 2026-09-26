@@ -3,20 +3,17 @@ import { PRICING_PLANS } from '../../data/courses';
 import { useSale } from '../../context/SaleContext';
 import {
   Sparkles,
-  Check,
   Zap,
   ArrowRight,
   ShieldCheck,
-  HelpCircle,
   Tag,
-  CheckCircle2,
-  Lock
+  CheckCircle2
 } from 'lucide-react';
 import { triggerSaleCelebration } from '../ui/Confetti';
 
-export const PricingSection: React.FC = () => {
-  const [selectedDurationIndex, setSelectedDurationIndex] = useState<number>(0);
-  const [inputCode, setInputCode] = useState<string>('');
+export const PricingSection = () => {
+  const [selectedDurationIndex, setSelectedDurationIndex] = useState(0);
+  const [inputCode, setInputCode] = useState('');
   const {
     isCouponApplied,
     copyAndApplyCoupon,
@@ -24,12 +21,11 @@ export const PricingSection: React.FC = () => {
     couponCode,
     discountPercentage,
     openSaleModal,
-    remainingTime
   } = useSale();
 
   const durations = ['1 Year', '2 Years', '3 Years', '4 Years'];
 
-  const handleApplyInputCoupon = (e: React.FormEvent) => {
+  const handleApplyInputCoupon = (e) => {
     e.preventDefault();
     if (inputCode.trim().toUpperCase() === couponCode) {
       copyAndApplyCoupon();
@@ -40,38 +36,38 @@ export const PricingSection: React.FC = () => {
   };
 
   return (
-    <section id="pricing" className="py-20 relative bg-[#07090e] border-b border-white/[0.06] overflow-hidden">
+    <section id="pricing" className="py-20 relative bg-[#000000] border-b border-white/[0.06] overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-mono mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>TRANSPARENT ONE-TIME MEMBERSHIPS</span>
+            <span>STRIKE MEMBERSHIPS</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
             Invest in your engineering future.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-indigo-300 to-cyan-400">
-              No hidden renewals.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-400">
+              No recurring auto-debits.
             </span>
           </h2>
 
           <p className="mt-4 text-base text-slate-300">
-            One single payment unlocks extensive course archives, live bootcamps, and career referrals.
+            One-time payment unlocks extensive course archives, live bootcamps, and career referrals.
           </p>
 
           {/* Duration Selector Tabs */}
-          <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl">
+          <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-zinc-900 border border-zinc-800 shadow-xl">
             {durations.map((dur, index) => (
               <button
                 key={dur}
                 onClick={() => setSelectedDurationIndex(index)}
                 className={`px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   selectedDurationIndex === index
-                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -82,7 +78,7 @@ export const PricingSection: React.FC = () => {
         </div>
 
         {/* Live Coupon Bar */}
-        <div className="max-w-xl mx-auto mb-12 p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-xl mx-auto mb-12 p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
               <Tag className="w-5 h-5" />
@@ -103,7 +99,7 @@ export const PricingSection: React.FC = () => {
                 </span>
                 <button
                   onClick={removeCoupon}
-                  className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white text-xs font-semibold transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-slate-400 hover:text-white text-xs font-semibold transition-colors cursor-pointer"
                 >
                   Remove
                 </button>
@@ -115,11 +111,11 @@ export const PricingSection: React.FC = () => {
                   placeholder="e.g. THUNDER40"
                   value={inputCode}
                   onChange={(e) => setInputCode(e.target.value)}
-                  className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-32 uppercase"
+                  className="px-3 py-1.5 rounded-xl bg-black border border-zinc-700 text-xs font-mono text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500 w-32 uppercase"
                 />
                 <button
                   type="submit"
-                  className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition-colors cursor-pointer"
                 >
                   Apply
                 </button>
@@ -155,8 +151,8 @@ export const PricingSection: React.FC = () => {
                 key={plan.id}
                 className={`rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative ${
                   plan.popular
-                    ? 'bg-gradient-to-b from-[#12192d] to-[#090d16] border-2 border-indigo-500/80 shadow-2xl shadow-indigo-950/60 lg:-translate-y-2'
-                    : 'bg-[#090d16] border border-slate-800 hover:border-slate-700 shadow-xl'
+                    ? 'bg-gradient-to-b from-[#13121f] to-[#0b0b0e] border-2 border-purple-500/80 shadow-2xl shadow-purple-950/60 lg:-translate-y-2'
+                    : 'bg-[#0b0b0e] border border-zinc-800 hover:border-zinc-700 shadow-xl'
                 }`}
               >
                 {/* Popular Pill */}
@@ -172,7 +168,7 @@ export const PricingSection: React.FC = () => {
                     <h3 className="font-display text-2xl font-extrabold text-white">
                       {plan.name}
                     </h3>
-                    <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300">
+                    <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300">
                       {currentDurationData.duration} Access
                     </span>
                   </div>
@@ -182,7 +178,7 @@ export const PricingSection: React.FC = () => {
                   </p>
 
                   {/* Price Block */}
-                  <div className="mt-6 p-6 rounded-2xl bg-slate-900/90 border border-slate-800/90">
+                  <div className="mt-6 p-6 rounded-2xl bg-zinc-900/90 border border-zinc-800">
                     <div className="flex items-baseline justify-between">
                       <div>
                         <div className="flex items-baseline gap-2">
@@ -217,7 +213,7 @@ export const PricingSection: React.FC = () => {
                       <div key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
                         <CheckCircle2
                           className={`w-4 h-4 shrink-0 mt-0.5 ${
-                            plan.popular ? 'text-amber-400' : 'text-indigo-400'
+                            plan.popular ? 'text-amber-400' : 'text-purple-400'
                           }`}
                         />
                         <span>{feat}</span>
@@ -227,7 +223,7 @@ export const PricingSection: React.FC = () => {
                 </div>
 
                 {/* Bottom CTA Button */}
-                <div className="mt-10 pt-6 border-t border-slate-800/80">
+                <div className="mt-10 pt-6 border-t border-zinc-800">
                   <button
                     onClick={() => {
                       triggerSaleCelebration();
@@ -235,8 +231,8 @@ export const PricingSection: React.FC = () => {
                     }}
                     className={`w-full py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer ${
                       plan.popular
-                        ? 'bg-gradient-to-r from-amber-500 via-orange-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-slate-950 shadow-amber-500/20 font-black'
-                        : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-950/60'
+                        ? 'bg-gradient-to-r from-amber-500 via-purple-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white shadow-purple-500/20 font-black'
+                        : 'bg-purple-600 hover:bg-purple-500 text-white shadow-purple-950/60'
                     }`}
                   >
                     <span>Get Instant Access to {plan.name}</span>
@@ -245,7 +241,7 @@ export const PricingSection: React.FC = () => {
 
                   <p className="text-[11px] text-center text-slate-500 mt-2.5 flex items-center justify-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Instant Discord & Platform Access Granted</span>
+                    <span>Instant Discord &amp; Platform Access Granted</span>
                   </p>
                 </div>
               </div>

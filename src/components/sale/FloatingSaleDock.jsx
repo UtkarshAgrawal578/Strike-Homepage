@@ -2,7 +2,7 @@ import React from 'react';
 import { useSale } from '../../context/SaleContext';
 import { Zap, Sparkles, Clock, AlertTriangle } from 'lucide-react';
 
-export const FloatingSaleDock: React.FC = () => {
+export const FloatingSaleDock = () => {
   const {
     openSaleModal,
     isModalOpen,
@@ -19,14 +19,14 @@ export const FloatingSaleDock: React.FC = () => {
         onClick={openSaleModal}
         className={`group relative flex items-center gap-3 px-4 py-2.5 rounded-full border transition-all duration-300 shadow-2xl backdrop-blur-xl cursor-pointer ${
           remainingTime.isExpired
-            ? 'bg-slate-900/90 border-slate-700 text-slate-400 hover:border-slate-600'
-            : 'bg-slate-900/90 hover:bg-slate-850 border-amber-500/50 hover:border-amber-400 text-white shadow-amber-500/20 hover:scale-105'
+            ? 'bg-zinc-900/90 border-zinc-700 text-slate-400 hover:border-zinc-600'
+            : 'bg-zinc-900/90 hover:bg-zinc-850 border-amber-500/50 hover:border-amber-400 text-white shadow-amber-500/20 hover:scale-105'
         }`}
         aria-label="Open Thunder Sale offer"
       >
         {/* Pulsing Aura */}
         {!remainingTime.isExpired && (
-          <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-amber-500 to-indigo-500 opacity-40 blur-sm group-hover:opacity-75 transition duration-500 animate-pulse" />
+          <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-amber-500 to-purple-500 opacity-40 blur-sm group-hover:opacity-75 transition duration-500 animate-pulse" />
         )}
 
         <div className="relative flex items-center gap-2.5">
@@ -34,7 +34,7 @@ export const FloatingSaleDock: React.FC = () => {
           <div
             className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs ${
               remainingTime.isExpired
-                ? 'bg-slate-800 text-slate-400'
+                ? 'bg-zinc-800 text-slate-400'
                 : 'bg-gradient-to-tr from-amber-400 to-orange-500 text-black shadow-md'
             }`}
           >
@@ -80,7 +80,7 @@ export const FloatingSaleDock: React.FC = () => {
             )}
           </div>
 
-          <span className="hidden sm:inline-block text-[11px] font-semibold text-indigo-300 bg-indigo-500/20 px-2 py-0.5 rounded-full border border-indigo-500/30">
+          <span className="hidden sm:inline-block text-[11px] font-semibold text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded-full border border-purple-500/30">
             {remainingTime.isExpired ? 'View Details' : 'Claim Grant →'}
           </span>
         </div>

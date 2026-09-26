@@ -2,20 +2,10 @@ import React, { useState } from 'react';
 import { useSale } from '../../context/SaleContext';
 import { Play, Sparkles, Check, Copy, Zap, Terminal, RefreshCw } from 'lucide-react';
 
-interface CodeSnippet {
-  id: string;
-  tab: string;
-  language: string;
-  code: string;
-  output: string;
-  easterEgg?: boolean;
-}
-
-const SNIPPETS: CodeSnippet[] = [
+const SNIPPETS = [
   {
     id: 'dsa',
     tab: 'DSA (C++)',
-    language: 'cpp',
     code: `// Strike First Principles: Binary Search & Two Pointers
 int findPeakElement(vector<int>& nums) {
     int low = 0, high = nums.size() - 1;
@@ -31,7 +21,6 @@ int findPeakElement(vector<int>& nums) {
   {
     id: 'genai',
     tab: 'GenAI Agent',
-    language: 'python',
     code: `# Autonomous Strike Multi-Agent Swarm
 from strike_ai import AgentSwarm, ToolRegistry
 
@@ -41,14 +30,13 @@ researcher = AgentSwarm.create(
 )
 
 # Execute Autonomous Loop
-decision = researcher.orchestrate("Analyze NIFTY breakout & find alpha")
+decision = researcher.orchestrate("Analyze breakout & find alpha")
 print(f"Signal: {decision.recommendation} | Confidence: 99.4%")`,
     output: `⚡ Initializing Strike Autonomous Swarm...\n[Agent 1: Researcher] Reading real-time market stream...\n[Agent 2: Risk Engine] Verified VaR & Position Sizing.\nSignal: STRONG BUY | Confidence: 99.4%`
   },
   {
     id: 'surge',
     tab: '⚡ Secret Surge Code',
-    language: 'bash',
     easterEgg: true,
     code: `# STRIKE THUNDER OVERDRIVE MATRIX PROTOCOL
 # Execute to unlock Hackathon 6.0 Grant Voucher
@@ -61,11 +49,11 @@ $ strike surge --grant-level=MAX_DISCOUNT --batch=THUNDER_6.0
   }
 ];
 
-export const InteractiveTerminal: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('dsa');
-  const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [runOutput, setRunOutput] = useState<string | null>(null);
-  const [copied, setCopied] = useState<boolean>(false);
+export const InteractiveTerminal = () => {
+  const [activeTab, setActiveTab] = useState('dsa');
+  const [isRunning, setIsRunning] = useState(false);
+  const [runOutput, setRunOutput] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const { openSaleModal, isCouponApplied } = useSale();
 
@@ -90,15 +78,15 @@ export const InteractiveTerminal: React.FC = () => {
   };
 
   return (
-    <div className="w-full rounded-2xl bg-[#090d16]/95 border border-indigo-500/30 shadow-2xl shadow-indigo-950/60 overflow-hidden font-mono text-xs">
+    <div id="terminal" className="w-full rounded-2xl bg-[#09090b] border border-purple-500/30 shadow-2xl shadow-purple-950/60 overflow-hidden font-mono text-xs">
       {/* Terminal Bar */}
-      <div className="px-4 py-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+      <div className="px-4 py-3 bg-zinc-900/90 border-b border-zinc-800 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-rose-500/80" />
           <div className="w-3 h-3 rounded-full bg-amber-500/80" />
           <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
           <span className="text-[11px] text-slate-400 ml-2 flex items-center gap-1">
-            <Terminal className="w-3.5 h-3.5 text-indigo-400" />
+            <Terminal className="w-3.5 h-3.5 text-purple-400" />
             strike_sandbox.sh
           </span>
         </div>
@@ -112,7 +100,6 @@ export const InteractiveTerminal: React.FC = () => {
                 setActiveTab(snip.id);
                 setRunOutput(null);
                 if (snip.easterEgg) {
-                  // open sale modal when user clicks on the Easter egg tab!
                   openSaleModal();
                 }
               }}
@@ -120,8 +107,8 @@ export const InteractiveTerminal: React.FC = () => {
                 activeTab === snip.id
                   ? snip.easterEgg
                     ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
-                    : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    : 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                  : 'text-slate-400 hover:text-white hover:bg-zinc-800'
               }`}
             >
               {snip.tab}
@@ -131,21 +118,21 @@ export const InteractiveTerminal: React.FC = () => {
       </div>
 
       {/* Code Editor Body */}
-      <div className="p-4 sm:p-5 text-slate-300 leading-relaxed overflow-x-auto bg-[#07090e]">
-        <pre className="font-mono text-xs text-slate-200 selection:bg-indigo-500/30">
+      <div className="p-4 sm:p-5 text-slate-300 leading-relaxed overflow-x-auto bg-[#040405]">
+        <pre className="font-mono text-xs text-slate-200 selection:bg-purple-500/30">
           <code>{currentSnippet.code}</code>
         </pre>
 
         {/* Run Output Area */}
         {runOutput && (
-          <div className="mt-4 p-3 rounded-xl bg-slate-950 border border-emerald-500/30 text-emerald-400 text-xs font-mono whitespace-pre-line animate-fadeIn">
+          <div className="mt-4 p-3 rounded-xl bg-zinc-950 border border-emerald-500/30 text-emerald-400 text-xs font-mono whitespace-pre-line animate-fadeIn">
             {runOutput}
           </div>
         )}
       </div>
 
       {/* Terminal Footer Controls */}
-      <div className="px-4 py-3 bg-slate-900/90 border-t border-slate-800/80 flex items-center justify-between gap-3">
+      <div className="px-4 py-3 bg-zinc-900/90 border-t border-zinc-800 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <button
             onClick={handleRun}
@@ -153,7 +140,7 @@ export const InteractiveTerminal: React.FC = () => {
             className={`px-4 py-1.5 rounded-lg font-bold text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer ${
               currentSnippet.easterEgg
                 ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 hover:brightness-110 shadow-amber-500/20'
-                : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-500/20'
+                : 'bg-purple-600 hover:bg-purple-500 text-white shadow-purple-500/20'
             }`}
           >
             {isRunning ? (
@@ -168,7 +155,7 @@ export const InteractiveTerminal: React.FC = () => {
 
           <button
             onClick={handleCopyCode}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-zinc-800 transition-colors"
             title="Copy Code"
           >
             {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}

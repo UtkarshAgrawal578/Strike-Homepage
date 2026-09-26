@@ -1,13 +1,11 @@
-import { Course, PricingPlan } from '../types';
-
-export const COURSES_DATA: Course[] = [
+export const COURSES_DATA = [
   {
-    id: 'thunder-100',
+    id: 'thunder-web',
     title: 'Thunder: 100 Days of Code',
-    subtitle: 'Comprehensive live bootcamp taking you from absolute zero to building production-grade distributed full-stack systems.',
+    subtitle: 'Master Full Stack Web Development, Distributed System Design (HLD & LLD), React, TypeScript, Node.js, and DevOps from Scratch with Live Coding.',
     category: 'bootcamp',
-    instructor: 'Rohit Negi',
-    instructorRole: 'Ex-Uber, IIT-G, Top Educator',
+    instructor: 'Rohit Negi & Aditya Tandon',
+    instructorRole: 'Ex-Uber SDE & Senior Distributed Systems Architect',
     rating: 4.98,
     reviewsCount: 4820,
     enrolledCount: '18,500+',
@@ -16,93 +14,95 @@ export const COURSES_DATA: Course[] = [
     badge: 'FLAGSHIP LIVE BATCH',
     badgeColor: 'bg-gradient-to-r from-amber-500 to-orange-500 text-black font-bold',
     isLive: true,
-    startDate: 'Batch Starts Next Monday',
-    tags: ['Full Stack', 'System Design', 'DevOps', 'Live Projects', 'DSA'],
+    startDate: 'Live Batch Enrolling',
+    duration: '100+ Hours • 72 Modules',
+    thumbnail: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80',
+    tags: ['Full Stack', 'React 19', 'System Design', 'DevOps', 'Live Projects'],
     features: [
-      '100+ Live Interactive Coding Sessions',
-      'Production MERN + TypeScript + Microservices',
-      'High-Level & Low-Level System Design (HLD/LLD)',
-      'Docker, Kubernetes, CI/CD Pipeline Deployment',
-      'Daily Practice Problem Sets & TA Doubts Resolving',
+      '100+ Hours of Live Interactive Classes',
+      'Advanced High Level & Low Level System Design',
+      'Production MERN + TypeScript Architecture',
+      'Docker, Kubernetes, CI/CD Pipeline Deployments',
+      'Daily Doubt Solving on Dedicated Discord',
       '1-on-1 Resume Reviews & Mock Interviews'
     ],
-    thumbnailGradient: 'from-amber-500/20 via-orange-600/10 to-indigo-950/40',
-    iconName: 'Zap',
+    thumbnailGradient: 'from-amber-500/20 via-orange-600/10 to-purple-950/40',
     syllabusHighlights: [
       {
-        week: 'Weeks 1-3',
+        week: 'Module 1 (Weeks 1-3)',
         title: 'Modern Frontend & TypeScript Architecture',
-        topics: ['Advanced JavaScript Core', 'React 19 Hooks & Internals', 'TypeScript in Production', 'Tailwind & UI Optimization']
+        topics: ['JavaScript V8 Internals & Event Loop', 'React 19 Hooks & Server Components', 'TypeScript in Production', 'Tailwind CSS & Responsive Layouts']
       },
       {
-        week: 'Weeks 4-7',
-        title: 'Backend Systems & Database Design',
-        topics: ['Node.js & Express at Scale', 'PostgreSQL & MongoDB Deep Dive', 'Redis Caching & Pub-Sub', 'Kafka Event Streaming']
+        week: 'Module 2 (Weeks 4-7)',
+        title: 'Distributed Backend & Database Mastery',
+        topics: ['Node.js & Express Scalable Architecture', 'PostgreSQL Relational Schema Design', 'MongoDB Indexing & Sharding', 'Redis Caching & Kafka Pub-Sub']
       },
       {
-        week: 'Weeks 8-11',
+        week: 'Module 3 (Weeks 8-11)',
         title: 'System Design (HLD + LLD) & Security',
-        topics: ['Load Balancers, Rate Limiters', 'OAuth2, JWT & RBAC Security', 'Design Patterns (SOLID)', 'Scalable Chat & Video Architecture']
+        topics: ['Architecting Uber, Netflix & WhatsApp', 'SOLID Principles & 23 GoF Design Patterns', 'OAuth2, JWT & RBAC Security', 'Load Balancing & Rate Limiting']
       },
       {
-        week: 'Weeks 12-14',
-        title: 'DevOps, CI/CD & Capstone Production Deploy',
-        topics: ['Docker Containerization', 'Kubernetes Orchestration', 'AWS EC2, S3, CloudFront', 'CI/CD with GitHub Actions']
+        week: 'Module 4 (Weeks 12-14)',
+        title: 'DevOps & Capstone Production Deployment',
+        topics: ['Docker Multi-stage Containerization', 'Kubernetes Helm & AWS Deployment', 'CI/CD with GitHub Actions', 'Full Production Capstone Launch']
       }
     ]
   },
   {
     id: 'genai-engineering',
-    title: 'Complete Generative AI Engineering Bootcamp',
-    subtitle: 'Build & Deploy Autonomous Multi-Agent Systems, RAG Pipelines, Fine-tuned LLMs & Vector Databases.',
+    title: 'The Complete Generative AI Engineering Bootcamp',
+    subtitle: 'Build & Deploy Autonomous AI Agents, Enterprise RAG Pipelines, Fine-tuned LLMs & Multi-Agent Swarms with LangChain & LangGraph.',
     category: 'genai',
-    instructor: 'Rohit Negi & AI Research Team',
-    instructorRole: 'AI Systems Specialists',
-    rating: 4.95,
+    instructor: 'Rohit Negi',
+    instructorRole: 'Ex-Uber SDE & AI Systems Specialist',
+    rating: 4.96,
     reviewsCount: 3150,
     enrolledCount: '12,200+',
     originalPrice: 14999,
     currentPrice: 8999,
     badge: 'TRENDING #1',
-    badgeColor: 'bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold',
+    badgeColor: 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold',
     isLive: true,
     startDate: 'Enrolling Now',
-    tags: ['Gen AI', 'LangChain', 'LlamaIndex', 'Autonomous Agents', 'RAG'],
+    duration: '80+ Hours • 45 Modules',
+    thumbnail: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80',
+    tags: ['Generative AI', 'LangGraph', 'Autonomous Agents', 'RAG', 'Vector DBs'],
     features: [
-      'Build Multi-Agent Workflows from Scratch',
+      'Build Multi-Agent Workflows & Autonomous Swarms',
       'Enterprise Production RAG Architecture',
       'Fine-Tuning Llama 3 & Mistral with LoRA/QLoRA',
       'Vector Databases (Pinecone, Qdrant, Milvus)',
       'Evaluation Frameworks (Ragas, TruLens)',
       '5 Real-World Autonomous Enterprise AI Projects'
     ],
-    thumbnailGradient: 'from-cyan-500/20 via-blue-600/10 to-purple-950/40',
-    iconName: 'Cpu',
+    thumbnailGradient: 'from-purple-500/20 via-indigo-600/10 to-cyan-950/40',
     syllabusHighlights: [
       {
-        week: 'Module 1',
-        title: 'Foundations of LLMs & Prompt Engineering',
+        week: 'Phase 1',
+        title: 'LLM Foundations & Prompt Engineering',
         topics: ['Transformer Architecture Internals', 'Context Windows & Tokenization', 'Advanced Chain-of-Thought Prompting']
       },
       {
-        week: 'Module 2',
-        title: 'RAG & Vector Search Systems',
-        topics: ['Chunking Strategies', 'Dense & Sparse Embeddings', 'Hybrid Search & Re-ranking']
+        week: 'Phase 2',
+        title: 'Production RAG & Vector Embeddings',
+        topics: ['Chunking Strategies & Hybrid Search', 'Pinecone & Qdrant Integration', 'Re-ranking & Context Compression']
       },
       {
-        week: 'Module 3',
-        title: 'Autonomous AI Agents & Orchestration',
-        topics: ['LangGraph & AutoGen Workflows', 'Tool Calling & Function Execution', 'Multi-Agent Consensus Protocols']
+        week: 'Phase 3',
+        title: 'Autonomous Multi-Agent Swarms',
+        topics: ['LangGraph State Machines', 'Tool Calling & Function Execution', 'Multi-Agent Consensus Protocols']
       }
     ]
   },
   {
     id: 'dsa-cpp-mastery',
-    title: 'DSA Mastery in C++: Beginner to FAANG',
-    subtitle: 'Master Data Structures & Algorithms with First Principles problem solving, visual animations, and 450+ curated problems.',
+    title: 'Data Structures and Algorithms in C++: Beginner to Advanced',
+    subtitle: 'Master DSA from First Principles. 450+ curated problems, visual memory animations, and FAANG interview preparation.',
     category: 'dsa',
     instructor: 'Rohit Negi',
-    instructorRole: 'Ex-Uber SDE, AIR 202',
+    instructorRole: 'Ex-Uber SDE, AIR 202 GATE',
     rating: 4.99,
     reviewsCount: 8940,
     enrolledCount: '34,000+',
@@ -112,6 +112,8 @@ export const COURSES_DATA: Course[] = [
     badgeColor: 'bg-gradient-to-r from-emerald-400 to-teal-500 text-black font-bold',
     isLive: false,
     startDate: 'Instant Lifetime Access',
+    duration: '150+ Hours • 450+ Problems',
+    thumbnail: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop&q=80',
     tags: ['C++', 'DSA', 'LeetCode Hard', 'FAANG Prep', 'First Principles'],
     features: [
       '450+ Hand-Picked Coding Problems',
@@ -122,7 +124,6 @@ export const COURSES_DATA: Course[] = [
       'Lifetime Access + Dedicated Discord Support'
     ],
     thumbnailGradient: 'from-emerald-500/20 via-teal-600/10 to-zinc-950/40',
-    iconName: 'Code2',
     syllabusHighlights: [
       {
         week: 'Phase 1',
@@ -143,11 +144,11 @@ export const COURSES_DATA: Course[] = [
   },
   {
     id: 'system-design-security',
-    title: 'High Level Design (HLD) & Low Level Design (LLD)',
-    subtitle: 'Architect massive scale systems handling 100M+ users. Learn scalability, microservices, and design patterns.',
+    title: 'High Level Design (HLD) & System Design Mastery',
+    subtitle: 'Architect massive scale systems handling 100M+ active users. Scalability, microservices, databases, and enterprise security.',
     category: 'systemdesign',
     instructor: 'Rohit Negi',
-    instructorRole: 'Ex-Uber, Distributed Systems',
+    instructorRole: 'Ex-Uber Distributed Systems',
     rating: 4.96,
     reviewsCount: 2900,
     enrolledCount: '9,800+',
@@ -156,8 +157,10 @@ export const COURSES_DATA: Course[] = [
     badge: 'SENIOR SDE ESSENTIAL',
     badgeColor: 'bg-gradient-to-r from-purple-400 to-pink-500 text-black font-bold',
     isLive: false,
-    startDate: 'Instant Access',
-    tags: ['HLD', 'LLD', 'Microservices', 'Distributed Systems', 'Security'],
+    startDate: 'Instant Lifetime Access',
+    duration: '60+ Hours • 35 Systems',
+    thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80',
+    tags: ['HLD', 'Distributed Systems', 'Microservices', 'Security', 'Kafka'],
     features: [
       'Design Real Systems: WhatsApp, Uber, Netflix, TinyURL',
       'SOLID Principles & 23 Gang of Four Patterns',
@@ -167,12 +170,11 @@ export const COURSES_DATA: Course[] = [
       'Senior Engineering Interview Prep'
     ],
     thumbnailGradient: 'from-purple-500/20 via-indigo-600/10 to-slate-950/40',
-    iconName: 'Layers',
     syllabusHighlights: [
       {
         week: 'Part 1',
-        title: 'Low Level Design & Object Oriented Mastery',
-        topics: ['Design Patterns with Code', 'Schema Modeling', 'Concurrency & Multithreading']
+        title: 'Low Level Design & Object Oriented Patterns',
+        topics: ['SOLID Principles with Real Code', 'Design Patterns (Factory, Strategy, Observer)', 'Concurrency & Thread Pools']
       },
       {
         week: 'Part 2',
@@ -183,10 +185,10 @@ export const COURSES_DATA: Course[] = [
   },
   {
     id: 'devops-cloud',
-    title: 'DevOps: Foundations to Cloud Production',
+    title: 'DevOps: From Foundations to Production',
     subtitle: 'Master Docker, Kubernetes, Terraform, AWS, Prometheus, Grafana, and automated CI/CD pipelines.',
     category: 'systemdesign',
-    instructor: 'DevOps Lead Team',
+    instructor: 'Aditya Tandon & DevOps Team',
     instructorRole: 'Cloud Architects',
     rating: 4.92,
     reviewsCount: 1650,
@@ -197,6 +199,8 @@ export const COURSES_DATA: Course[] = [
     badgeColor: 'bg-gradient-to-r from-blue-400 to-indigo-500 text-black font-bold',
     isLive: false,
     startDate: 'Instant Access',
+    duration: '50+ Hours • 25 Deployments',
+    thumbnail: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80',
     tags: ['Docker', 'Kubernetes', 'AWS', 'Terraform', 'CI/CD'],
     features: [
       'Containerizing Complex Microservices',
@@ -207,7 +211,6 @@ export const COURSES_DATA: Course[] = [
       'Cloud Security & Cost Optimization'
     ],
     thumbnailGradient: 'from-sky-500/20 via-indigo-600/10 to-slate-950/40',
-    iconName: 'Server',
     syllabusHighlights: [
       {
         week: 'Module 1',
@@ -223,11 +226,11 @@ export const COURSES_DATA: Course[] = [
   },
   {
     id: 'dsa-genai-combo',
-    title: 'Complete DSA + Generative AI Super Combo',
+    title: 'Complete DSA + GenAI Combo: Algorithms to AI Agents',
     subtitle: 'The ultimate 2-in-1 tech mastery bundle combining algorithmic problem solving with cutting-edge AI Agent engineering.',
     category: 'bootcamp',
     instructor: 'Rohit Negi',
-    instructorRole: 'Lead Instructor',
+    instructorRole: 'Founder & Lead Instructor',
     rating: 4.99,
     reviewsCount: 5200,
     enrolledCount: '21,000+',
@@ -237,6 +240,8 @@ export const COURSES_DATA: Course[] = [
     badgeColor: 'bg-gradient-to-r from-fuchsia-400 to-rose-500 text-black font-bold',
     isLive: true,
     startDate: 'Immediate Access + Live Batch',
+    duration: '230+ Hours Total',
+    thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&auto=format&fit=crop&q=80',
     tags: ['Combo Bundle', 'DSA', 'Gen AI', 'Career Fast-Track', 'All Access'],
     features: [
       'Includes Complete DSA in C++ Mastery',
@@ -247,7 +252,6 @@ export const COURSES_DATA: Course[] = [
       'Verified Dual Certification'
     ],
     thumbnailGradient: 'from-fuchsia-500/20 via-violet-600/10 to-slate-950/40',
-    iconName: 'Sparkles',
     syllabusHighlights: [
       {
         week: 'Track 1',
@@ -263,11 +267,11 @@ export const COURSES_DATA: Course[] = [
   }
 ];
 
-export const PRICING_PLANS: PricingPlan[] = [
+export const PRICING_PLANS = [
   {
     id: 'strike-plus',
     name: 'Strike Plus',
-    tagline: 'Complete access to all foundational courses and curated problem libraries for serious career climbers.',
+    tagline: 'Complete access to the entire recorded course library and curated practice questions on Coder Arena.',
     popular: false,
     durations: [
       { duration: '1 Year', originalPrice: 9999, salePrice: 5999, monthlyEquivalent: 499 },
@@ -289,9 +293,9 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: 'strike-ultra',
     name: 'Strike Ultra',
-    tagline: 'The all-inclusive elite membership. Everything in Plus + All upcoming Live Bootcamps & Gen AI Agents.',
+    tagline: 'The ultimate all-inclusive pass. Everything in Plus + All upcoming Live Bootcamps (including Thunder 100) & Gen AI.',
     popular: true,
-    badge: 'MOST POPULAR FOR JOB SEEKERS',
+    badge: 'RECOMMENDED FOR FULL CAREER TRANSITION',
     durations: [
       { duration: '1 Year', originalPrice: 15999, salePrice: 9599, monthlyEquivalent: 799 },
       { duration: '2 Years', originalPrice: 22999, salePrice: 13799, monthlyEquivalent: 574 },
