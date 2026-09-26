@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSale } from '../../context/SaleContext';
-import { Zap, Menu, X, ArrowUpRight, Sparkles, BookOpen, Layers, Users, HelpCircle } from 'lucide-react';
+import { Zap, Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 
 export const Navbar = () => {
   const { openSaleModal, remainingTime, isCouponApplied } = useSale();
@@ -11,7 +11,7 @@ export const Navbar = () => {
     { name: 'Thunder 100', href: '#thunder-section', badge: 'LIVE' },
     { name: 'Strike Plus', href: '#pricing' },
     { name: 'Coder Arena', href: '#terminal' },
-    { name: 'Instructor', href: '#mentor' },
+    { name: 'Mentors', href: '#mentors' },
     { name: 'FAQs', href: '#faq' },
   ];
 
@@ -24,9 +24,9 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.08] bg-[#000000]/85 backdrop-blur-xl transition-all">
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.08] bg-[#000000]/90 backdrop-blur-xl transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Left Brand Logo */}
+        {/* Left Brand Logo: Clean STRIKE */}
         <div className="flex items-center gap-3">
           <a href="#" className="flex items-center gap-2.5 group">
             {/* Strike Logo Mark */}
@@ -37,21 +37,18 @@ export const Navbar = () => {
               <span className="font-display font-black text-2xl tracking-wider text-white flex items-center gap-1">
                 STRIKE<span className="text-amber-400">.</span>
               </span>
-              <span className="text-[10px] font-mono font-bold tracking-widest text-slate-400 -mt-1 uppercase">
-                by Rohit Negi
-              </span>
             </div>
           </a>
 
-          {/* Hackathon / Thunder Flash Sale Discovery Badge */}
+          {/* Flash Grant Discovery Chip */}
           {!remainingTime.isExpired && (
             <button
               onClick={openSaleModal}
               className="hidden lg:flex items-center gap-2 ml-4 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/15 via-purple-500/15 to-cyan-500/15 border border-amber-500/40 hover:border-amber-400 text-xs text-amber-300 font-mono transition-all cursor-pointer group animate-pulse"
-              title="Click to discover Thunder Hackathon 6.0 Grant"
+              title="Click to view Thunder Flash Grant"
             >
               <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span>⚡ THUNDER 6.0 FLASH GRANT</span>
+              <span>⚡ THUNDER FLASH GRANT</span>
               <span className="px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-bold text-[10px]">
                 {isCouponApplied ? '40% APPLIED' : '40% OFF'}
               </span>
@@ -92,7 +89,7 @@ export const Navbar = () => {
             className="relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-xl font-medium group cursor-pointer"
           >
             <span className="w-full h-full bg-gradient-to-br from-amber-500 via-purple-600 to-indigo-600 group-hover:from-amber-400 group-hover:to-indigo-500 absolute"></span>
-            <span className="relative px-4 py-2 transition-all ease-out bg-slate-950 rounded-[10px] group-hover:bg-opacity-0 text-white text-sm font-semibold flex items-center gap-1.5">
+            <span className="relative px-4 py-2 transition-all ease-out bg-zinc-950 rounded-[10px] group-hover:bg-opacity-0 text-white text-sm font-semibold flex items-center gap-1.5">
               <span>Explore Batches</span>
               <ArrowUpRight className="w-4 h-4 text-amber-400 group-hover:text-white transition-colors" />
             </span>
@@ -148,7 +145,7 @@ export const Navbar = () => {
               className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-purple-600 text-white font-bold text-sm flex items-center justify-center gap-2"
             >
               <Zap className="w-4 h-4" />
-              <span>Explore Thunder 6.0 Grant (-40%)</span>
+              <span>Explore Thunder Batch Grant (-40%)</span>
             </button>
           </div>
         </div>

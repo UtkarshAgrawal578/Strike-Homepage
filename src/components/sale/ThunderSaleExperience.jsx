@@ -77,14 +77,14 @@ export const ThunderSaleExperience = () => {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-display font-black text-base sm:text-lg tracking-wide text-white">
-                  THUNDER OVERDRIVE 6.0
+                  THUNDER OVERDRIVE SALE
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold border border-amber-500/30 animate-pulse">
                   LIMITED FLASH EVENT
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Official Hackathon Exclusive Grant for STRIKE Learning Batches
+                Official Special Batch Grant for STRIKE Learning Programs
               </p>
             </div>
           </div>

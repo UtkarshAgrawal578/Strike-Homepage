@@ -4,7 +4,6 @@ const STORAGE_KEYS = {
   END_TIME: 'strike_thunder_sale_end_time',
   UNLOCKED: 'strike_thunder_sale_unlocked',
   APPLIED: 'strike_thunder_sale_applied',
-  DISMISSED_INITIAL: 'strike_thunder_sale_dismissed_initial',
 };
 
 const DEFAULT_DURATION_HOURS = 48;
@@ -75,17 +74,13 @@ export const SaleProvider = ({ children }) => {
     return () => clearInterval(interval);
   }, [targetEndTime, calculateRemaining]);
 
-  // Subtle auto-discovery trigger on first visit after 3.5 seconds
+  // ALWAYS open the sale popup whenever the webpage is loaded / refreshed
   useEffect(() => {
-    const hasDismissed = localStorage.getItem(STORAGE_KEYS.DISMISSED_INITIAL);
-    if (!hasDismissed && !remainingTime.isExpired) {
-      const timer = setTimeout(() => {
-        setIsModalOpen(true);
-        localStorage.setItem(STORAGE_KEYS.DISMISSED_INITIAL, 'true');
-      }, 3500);
-      return () => clearTimeout(timer);
-    }
-  }, [remainingTime.isExpired]);
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 700);
+    return () => clearTimeout(timer);
+  }, []);
 
   const showToast = (msg) => {
     setToastMessage(msg);
@@ -112,7 +107,7 @@ export const SaleProvider = ({ children }) => {
 
   const copyAndApplyCoupon = () => {
     if (remainingTime.isExpired) {
-      showToast('⚠️ This coupon has expired and cannot be applied.');
+      showToast('⚠️ This offer window has expired and cannot be applied.');
       return;
     }
 
@@ -130,17 +125,15 @@ export const SaleProvider = ({ children }) => {
     showToast('Coupon removed. Standard pricing restored.');
   };
 
-  // Hackathon tester helper: Force expire immediately (0 seconds)
   const forceExpireTimer = () => {
     const pastTime = Date.now() - 1000;
     setTargetEndTime(pastTime);
     localStorage.setItem(STORAGE_KEYS.END_TIME, pastTime.toString());
     setIsCouponApplied(false);
     localStorage.removeItem(STORAGE_KEYS.APPLIED);
-    showToast('⏱️ Timer forced to 00:00:00 (Expired State Active)');
+    showToast('⏱️ Timer set to 00:00:00 (Expired Offer State)');
   };
 
-  // Hackathon tester helper: Reset timer to fresh 48 hours
   const resetTimer = (hours = DEFAULT_DURATION_HOURS) => {
     const newTarget = Date.now() + hours * 60 * 60 * 1000;
     setTargetEndTime(newTarget);
