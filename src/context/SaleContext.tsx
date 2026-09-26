@@ -1,0 +1,205 @@
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { SaleState } from '../types';
+
+interface SaleContextType extends SaleState {
+  openSaleModal: () => void;
+  closeSaleModal: () => void;
+  unlockOffer: () => void;
+  copyAndApplyCoupon: () => void;
+  removeCoupon: () => void;
+  forceExpireTimer: () => void;
+  resetTimer: (hours?: number) => void;
+  toastMessage: string | null;
+  clearToast: () => void;
+  showToast: (msg: string) => void;
+}
+
+const STORAGE_KEYS = {
+  END_TIME: 'strike_thunder_sale_end_time',
+  UNLOCKED: 'strike_thunder_sale_unlocked',
+  APPLIED: 'strike_thunder_sale_applied',
+  DISMISSED_INITIAL: 'strike_thunder_sale_dismissed_initial',
+};
+
+const DEFAULT_DURATION_HOURS = 48;
+const COUPON_CODE = 'THUNDER40';
+const DISCOUNT_PERCENT = 40;
+
+const SaleContext = createContext<SaleContextType | undefined>(undefined);
+
+export const SaleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
+    return localStorage.getItem(STORAGE_KEYS.UNLOCKED) === 'true';
+  });
+  const [isCouponApplied, setIsCouponApplied] = useState<boolean>(() => {
+    return localStorage.getItem(STORAGE_KEYS.APPLIED) === 'true';
+  });
+  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Initialize or retrieve persistent target end time
+  const [targetEndTime, setTargetEndTime] = useState<number>(() => {
+    const saved = localStorage.getItem(STORAGE_KEYS.END_TIME);
+    if (saved) {
+      const parsed = parseInt(saved, 10);
+      if (!isNaN(parsed)) {
+        return parsed;
+      }
+    }
+    // Set 48 hours from current timestamp
+    const newTarget = Date.now() + DEFAULT_DURATION_HOURS * 60 * 60 * 1000;
+    localStorage.setItem(STORAGE_KEYS.END_TIME, newTarget.toString());
+    return newTarget;
+  });
+
+  const [remainingTime, setRemainingTime] = useState<{
+    hours: number;
+    minutes: number;
+    seconds: number;
+    isExpired: boolean;
+  }>({
+    hours: 48,
+    minutes: 0,
+    seconds: 0,
+    isExpired: false,
+  });
+
+  // Calculate remaining countdown based on persistent timestamp
+  const calculateRemaining = useCallback((targetMs: number) => {
+    const now = Date.now();
+    const diff = targetMs - now;
+
+    if (diff <= 0) {
+      return { hours: 0, minutes: 0, seconds: 0, isExpired: true };
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return { hours, minutes, seconds, isExpired: false };
+  }, []);
+
+  // Live timer interval
+  useEffect(() => {
+    const updateTime = () => {
+      const computed = calculateRemaining(targetEndTime);
+      setRemainingTime(computed);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, [targetEndTime, calculateRemaining]);
+
+  // Subtle auto-discovery trigger on first visit after 4 seconds if not opened yet
+  useEffect(() => {
+    const hasDismissed = localStorage.getItem(STORAGE_KEYS.DISMISSED_INITIAL);
+    if (!hasDismissed && !remainingTime.isExpired) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(true);
+        localStorage.setItem(STORAGE_KEYS.DISMISSED_INITIAL, 'true');
+      }, 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [remainingTime.isExpired]);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+  };
+
+  const clearToast = () => {
+    setToastMessage(null);
+  };
+
+  const openSaleModal = () => {
+    setHasInteracted(true);
+    setIsModalOpen(true);
+  };
+
+  const closeSaleModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const unlockOffer = () => {
+    setIsUnlocked(true);
+    localStorage.setItem(STORAGE_KEYS.UNLOCKED, 'true');
+    showToast('⚡ Thunder Overdrive Activated! 40% Discount Ready');
+  };
+
+  const copyAndApplyCoupon = () => {
+    if (remainingTime.isExpired) {
+      showToast('⚠️ This coupon has expired and cannot be applied.');
+      return;
+    }
+
+    navigator.clipboard.writeText(COUPON_CODE).catch(() => {});
+    setIsCouponApplied(true);
+    setIsUnlocked(true);
+    localStorage.setItem(STORAGE_KEYS.UNLOCKED, 'true');
+    localStorage.setItem(STORAGE_KEYS.APPLIED, 'true');
+    showToast(`🎉 Coupon "${COUPON_CODE}" copied & 40% discount applied!`);
+  };
+
+  const removeCoupon = () => {
+    setIsCouponApplied(false);
+    localStorage.removeItem(STORAGE_KEYS.APPLIED);
+    showToast('Coupon removed. Standard pricing restored.');
+  };
+
+  // Hackathon tester helper: Force expire immediately (0 seconds)
+  const forceExpireTimer = () => {
+    const pastTime = Date.now() - 1000;
+    setTargetEndTime(pastTime);
+    localStorage.setItem(STORAGE_KEYS.END_TIME, pastTime.toString());
+    setIsCouponApplied(false);
+    localStorage.removeItem(STORAGE_KEYS.APPLIED);
+    showToast('⏱️ Timer forced to 00:00:00 (Expired State Active)');
+  };
+
+  // Hackathon tester helper: Reset timer to fresh 48 hours
+  const resetTimer = (hours: number = DEFAULT_DURATION_HOURS) => {
+    const newTarget = Date.now() + hours * 60 * 60 * 1000;
+    setTargetEndTime(newTarget);
+    localStorage.setItem(STORAGE_KEYS.END_TIME, newTarget.toString());
+    showToast(`🔄 Timer refreshed: ${hours} hours remaining.`);
+  };
+
+  return (
+    <SaleContext.Provider
+      value={{
+        isActive: !remainingTime.isExpired,
+        isModalOpen,
+        isUnlocked,
+        couponCode: COUPON_CODE,
+        discountPercentage: DISCOUNT_PERCENT,
+        targetEndTime,
+        remainingTime,
+        isCouponApplied: !remainingTime.isExpired && isCouponApplied,
+        hasInteracted,
+        openSaleModal,
+        closeSaleModal,
+        unlockOffer,
+        copyAndApplyCoupon,
+        removeCoupon,
+        forceExpireTimer,
+        resetTimer,
+        toastMessage,
+        clearToast,
+        showToast,
+      }}
+    >
+      {children}
+    </SaleContext.Provider>
+  );
+};
+
+export const useSale = () => {
+  const context = useContext(SaleContext);
+  if (!context) {
+    throw new Error('useSale must be used within a SaleProvider');
+  }
+  return context;
+};
