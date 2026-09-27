@@ -129,10 +129,7 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <button onClick={openSaleModal} className="text-amber-400 hover:text-amber-300 transition-colors text-left flex items-center gap-1 cursor-pointer">
-                  <Sparkles className="w-3 h-3" />
-                  <span>Thunder Flash Grant</span>
-                </button>
+                
               </li>
             </ul>
           </div>

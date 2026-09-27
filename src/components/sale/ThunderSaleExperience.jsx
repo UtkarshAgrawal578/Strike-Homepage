@@ -55,65 +55,45 @@ export const ThunderSaleExperience = () => {
 
   const offerCourses = [
     {
-      id: 'thunder-100',
-      tag: '⚡ FLAGSHIP BOOTCAMP',
-      name: 'Thunder: 100 Days of Code',
-      subtitle: 'Full Stack + Distributed Architectures + GenAI Agents',
-      originalPrice: 11999,
-      discountedPrice: 10199,
-      savings: 1800,
-      badge: 'POPULAR',
-      badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
-      target: 'courses',
-    },
-    {
       id: 'strike-ultra',
-      tag: '💎 VIP ALL-ACCESS',
+      tag: '💎 VIP ALL-ACCESS (RECOMMENDED)',
       name: 'Strike Ultra Membership',
-      subtitle: 'All Live Bootcamps + 1-on-1 Mentorship + Lifetime Access',
+      subtitle: 'Includes Thunder 100 + Generative AI Bootcamp + 1-on-1 Mentorship & Mocks',
       originalPrice: 15999,
       discountedPrice: 13599,
       savings: 2400,
       badge: 'BEST VALUE',
       badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+      popular: true,
       target: 'pricing',
+      features: [
+        '⚡ Full Access to Thunder: 100 Days of Code Bootcamp',
+        '🤖 Full Access to Generative AI & Autonomous Agents',
+        '🧠 Complete DSA C++ & Java Master Library',
+        '🎙️ 3 Guaranteed Mock Interviews with FAANG SDEs',
+        '🌟 1-on-1 Resume & Portfolio Audits with Rohit Negi'
+      ]
     },
     {
       id: 'strike-plus',
-      tag: '📦 COMPLETE ARCHIVE',
+      tag: '📦 COMPLETE RECORDED ARCHIVE',
       name: 'Strike Plus Pro Pack',
-      subtitle: 'All Video Courses + Coder Arena Pro (1 Year)',
+      subtitle: 'All Recorded Courses + System Design (HLD/LLD) + Coder Arena Pro',
       originalPrice: 9999,
       discountedPrice: 8499,
       savings: 1500,
-      badge: 'FAST TRACK',
+      badge: '15% OFF',
       badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
+      popular: false,
       target: 'pricing',
-    },
-    {
-      id: 'genai-bootcamp',
-      tag: '🤖 AGENT ARCHITECTURE',
-      name: 'Generative AI & Agent Swarms',
-      subtitle: 'RAG Pipelines, Function Calling, Local LLMs & MCP',
-      originalPrice: 7999,
-      discountedPrice: 6799,
-      savings: 1200,
-      badge: 'NEW',
-      badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-      target: 'courses',
-    },
-    {
-      id: 'dsa-mastery',
-      tag: '🧠 FIRST PRINCIPLES',
-      name: 'DSA Mastery in C++ & Java',
-      subtitle: 'Advanced Graphs, Dynamic Programming & LLD',
-      originalPrice: 6999,
-      discountedPrice: 5949,
-      savings: 1050,
-      badge: 'ESSENTIAL',
-      badgeColor: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30',
-      target: 'courses',
-    },
+      features: [
+        '📚 500+ Hours Video Course Library',
+        '🏗️ Distributed System Design (HLD & LLD)',
+        '💻 Coder Arena Pro Problem Solving Access',
+        '💬 Discord Community with Dedicated TA Support',
+        '📜 Verified Course Completion Certifications'
+      ]
+    }
   ];
 
   return (
@@ -176,13 +156,13 @@ export const ThunderSaleExperience = () => {
               <div>
                 <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold border border-emerald-500/20 mb-2">
                   <CheckCircle className="w-3.5 h-3.5" />
-                  <span>OFFER ACTIVE • 15% DISCOUNT APPLIED</span>
+                  <span>OFFER ACTIVE • 15% DISCOUNT ON ULTRA &amp; PLUS</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-display font-black text-white">
                   Flat <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-300">15% Monsoon Discount</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                  Applicable across <strong className="text-white">Thunder 100</strong>, <strong className="text-white">Strike Ultra</strong>, <strong className="text-white">Strike Plus</strong> &amp; All Bootcamps.
+                  Applicable exclusively on <strong className="text-white">Strike Ultra</strong> and <strong className="text-white">Strike Plus</strong> memberships.
                 </p>
               </div>
 
@@ -248,56 +228,82 @@ export const ThunderSaleExperience = () => {
             </div>
           </div>
 
-          {/* Offer Courses Grid - Directly Visible */}
+          {/* Offer Courses Grid - 2 Eligible Membership Programs */}
           <div>
             <div className="flex items-center justify-between mb-3">
               <h4 className="text-sm font-bold text-slate-200 flex items-center gap-2">
                 <Flame className="w-4 h-4 text-orange-400" />
-                Featured Offer Courses with Slashed 15% Tuition:
+                Eligible Programs with Slashed 15% Monsoon Tuition:
               </h4>
-              <span className="text-xs font-mono text-cyan-400">Direct 1-Click Enrollment</span>
+              <span className="text-xs font-mono text-cyan-400">Exclusive 2 Membership Passes</span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {offerCourses.map((course) => (
                 <div
                   key={course.id}
                   onClick={() => handleApplyToPlan(course.target)}
-                  className="p-4 rounded-2xl bg-[#0d0d12] border border-zinc-800 hover:border-purple-500/50 hover:bg-[#12121a] transition-all cursor-pointer group relative flex flex-col justify-between"
+                  className={`p-5 rounded-2xl border transition-all cursor-pointer group relative flex flex-col justify-between ${
+                    course.popular
+                      ? 'bg-gradient-to-b from-[#161226] via-[#0e0c18] to-[#09090d] border-purple-500/80 shadow-2xl shadow-purple-950/60 hover:border-purple-400'
+                      : 'bg-[#0d0d12] border-zinc-800 hover:border-cyan-500/50 hover:bg-[#12121a]'
+                  }`}
                 >
+                  {course.popular && (
+                    <div className="absolute -top-3 left-6 px-3 py-0.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 text-[10px] font-black font-mono shadow-md">
+                      MOST POPULAR
+                    </div>
+                  )}
+
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-mono text-purple-300 font-bold">
+                      <span className="text-[11px] font-mono text-purple-300 font-bold">
                         {course.tag}
                       </span>
-                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold border ${course.badgeColor}`}>
+                      <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-mono font-bold border ${course.badgeColor}`}>
                         SAVE ₹{course.savings.toLocaleString()}
                       </span>
                     </div>
 
-                    <h5 className="font-display text-sm sm:text-base font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1">
+                    <h5 className="font-display text-lg sm:text-xl font-black text-white group-hover:text-amber-300 transition-colors">
                       {course.name}
                     </h5>
-                    <p className="text-xs text-slate-400 line-clamp-2 mt-1">
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
                       {course.subtitle}
                     </p>
+
+                    {/* Features list */}
+                    <div className="mt-4 space-y-2 pt-3 border-t border-zinc-800/80">
+                      {course.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-300">
+                          <CheckCircle className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${course.popular ? 'text-amber-400' : 'text-cyan-400'}`} />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-zinc-800 flex items-baseline justify-between">
+                  <div className="mt-5 pt-4 border-t border-zinc-800 flex items-center justify-between">
                     <div>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-lg font-black text-white group-hover:text-cyan-300 transition-colors">
+                        <span className="text-2xl font-display font-black text-white group-hover:text-cyan-300 transition-colors">
                           ₹{course.discountedPrice.toLocaleString()}
                         </span>
                         <span className="text-xs text-slate-500 line-through">
                           ₹{course.originalPrice.toLocaleString()}
                         </span>
                       </div>
-                      <span className="text-[10px] font-mono text-emerald-400">15% Discount</span>
+                      <span className="text-[10px] font-mono text-emerald-400 font-semibold block">
+                        -15% Monsoon Discount Applied
+                      </span>
                     </div>
 
-                    <span className="text-xs font-bold text-purple-400 group-hover:text-white flex items-center gap-1">
-                      <span>Enroll</span>
+                    <span className={`px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-1 shadow-md transition-all ${
+                      course.popular
+                        ? 'bg-gradient-to-r from-amber-500 to-purple-600 group-hover:from-amber-400 group-hover:to-purple-500'
+                        : 'bg-zinc-800 group-hover:bg-cyan-600'
+                    }`}>
+                      <span>Claim 15% OFF</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>

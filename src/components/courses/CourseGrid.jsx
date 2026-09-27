@@ -51,7 +51,7 @@ export const CourseGrid = () => {
             {isCouponApplied && (
               <div className="px-4 py-2 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold flex items-center gap-2 shrink-0">
                 <Sparkles className="w-4 h-4 text-amber-300 animate-spin" style={{ animationDuration: '4s' }} />
-                <span>MONSOON15 ACTIVE: -15% AUTO-APPLIED</span>
+                <span>MONSOON15 ACTIVE: -15% ON ULTRA &amp; PLUS</span>
               </div>
             )}
           </div>

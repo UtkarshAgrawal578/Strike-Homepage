@@ -18,12 +18,9 @@ import {
 export const CourseCard = ({ course, onViewSyllabus }) => {
   const { isCouponApplied, openSaleModal, discountPercentage } = useSale();
 
-  // Price calculations
+  // Individual standalone course standard tuition
   const originalPrice = course.originalPrice;
-  const regularPrice = course.currentPrice;
-  const discountedPrice = isCouponApplied
-    ? Math.round(originalPrice * (1 - discountPercentage / 100))
-    : regularPrice;
+  const standardPrice = course.currentPrice;
 
   return (
     <div className="flex flex-col rounded-3xl bg-[#0b0b0e] border border-zinc-800/90 hover:border-purple-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-950/40 relative overflow-hidden group">
@@ -106,10 +103,10 @@ export const CourseCard = ({ course, onViewSyllabus }) => {
         <div className="pt-4 border-t border-zinc-800 mt-auto">
           <div className="flex items-baseline justify-between mb-4">
             <div>
-              <span className="text-[10px] font-mono text-slate-500 block">ENROLLMENT FEE</span>
+              <span className="text-[10px] font-mono text-slate-500 block">INDIVIDUAL ENROLLMENT</span>
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-display font-black text-white">
-                  ₹{discountedPrice.toLocaleString()}
+                  ₹{standardPrice.toLocaleString()}
                 </span>
                 <span className="text-xs text-slate-500 line-through">
                   ₹{originalPrice.toLocaleString()}
@@ -117,18 +114,13 @@ export const CourseCard = ({ course, onViewSyllabus }) => {
               </div>
             </div>
 
-            {isCouponApplied ? (
-              <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[11px] font-mono font-bold border border-emerald-500/30">
-                -15% APPLIED
-              </span>
-            ) : (
-              <button
-                onClick={openSaleModal}
-                className="text-[11px] font-mono text-amber-400 hover:text-amber-300 underline cursor-pointer"
-              >
-                ⚡ Get 15% OFF
-              </button>
-            )}
+            <a
+              href="#pricing"
+              className="px-2 py-0.5 rounded bg-purple-500/15 hover:bg-purple-500/25 text-purple-300 text-[10px] font-mono font-bold border border-purple-500/30 transition-colors"
+              title="Included in Strike Plus & Ultra with 15% OFF"
+            >
+              In Strike Plus &amp; Ultra →
+            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-2">

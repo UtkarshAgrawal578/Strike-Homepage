@@ -29,7 +29,7 @@ export const HeroSection = () => {
                   <span>END OF MONSOON SALE</span>
                 </span>
                 <span className="text-xs text-slate-300 font-medium">
-                  Flat 15% OFF Across All Programs
+                  Flat 15% OFF on Strike Ultra &amp; Plus
                 </span>
                 {!remainingTime.isExpired && (
                   <button
@@ -45,11 +45,11 @@ export const HeroSection = () => {
             {/* Main Headline */}
             <ScrollReveal delay={0.2}>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1]">
-                Master Computer Science &amp;{' '}
+                Take control of your{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-400">
-                  High-Scale Systems
+                  Future
                 </span>{' '}
-                from First Principles.
+                with Strke
               </h1>
             </ScrollReveal>
 
