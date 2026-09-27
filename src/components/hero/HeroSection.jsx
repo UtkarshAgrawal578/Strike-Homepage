@@ -49,7 +49,7 @@ export const HeroSection = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-400">
                   Future
                 </span>{' '}
-                with Strke
+                with Strike
               </h1>
             </ScrollReveal>
 
