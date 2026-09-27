@@ -21,9 +21,7 @@ export const MentorSpotlight = () => {
       ],
       youtube: 'https://youtube.com/@CoderArmy9',
       linkedin: 'https://linkedin.com/in/rohit-negi9',
-      // Left avatar from user image using CSS clip or container
-      imageSrc: '/mentors/mentors_section.png',
-      imagePosition: 'left'
+      imageSrc: '/mentors/rohit_negi.png'
     },
     {
       id: 'aditya-tandon',
@@ -41,9 +39,7 @@ export const MentorSpotlight = () => {
       ],
       youtube: 'https://youtube.com/@CoderArmy9',
       linkedin: 'https://linkedin.com',
-      // Right avatar from user image using CSS clip or container
-      imageSrc: '/mentors/mentors_section.png',
-      imagePosition: 'right'
+      imageSrc: '/mentors/aditya_tandon.png'
     }
   ];
 
@@ -83,34 +79,17 @@ export const MentorSpotlight = () => {
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <div>
-                  {/* Circular Avatar Container with the User Provided Photos */}
+                  {/* Circular Avatar Container with Individual Mentor Image */}
                   <div className="flex flex-col items-center text-center mb-6">
                     <div className="relative w-44 h-44 sm:w-48 sm:h-48 rounded-full p-1 bg-gradient-to-br from-zinc-700 via-zinc-800 to-zinc-900 shadow-2xl group-hover:scale-105 transition-transform duration-300 mb-4">
-                      {/* Inner clipping ring for the respective mentor image */}
-                      <div className="w-full h-full rounded-full overflow-hidden relative border-2 border-zinc-950 bg-black">
-                        {mentor.imagePosition === 'left' ? (
-                          /* Left mentor: Rohit Negi */
-                          <div
-                            className="w-full h-full"
-                            style={{
-                              backgroundImage: `url('${mentor.imageSrc}')`,
-                              backgroundSize: '210% auto',
-                              backgroundPosition: '16% 40%',
-                              backgroundRepeat: 'no-repeat'
-                            }}
-                          />
-                        ) : (
-                          /* Right mentor: Aditya Tandon */
-                          <div
-                            className="w-full h-full"
-                            style={{
-                              backgroundImage: `url('${mentor.imageSrc}')`,
-                              backgroundSize: '210% auto',
-                              backgroundPosition: '84% 40%',
-                              backgroundRepeat: 'no-repeat'
-                            }}
-                          />
-                        )}
+                      {/* Inner clipping ring */}
+                      <div className="w-full h-full rounded-full overflow-hidden relative border-2 border-zinc-950 bg-black flex items-center justify-center">
+                        <img
+                          src={mentor.imageSrc}
+                          alt={mentor.name}
+                          className="w-full h-full object-cover object-center rounded-full"
+                          loading="lazy"
+                        />
                       </div>
                     </div>
 
