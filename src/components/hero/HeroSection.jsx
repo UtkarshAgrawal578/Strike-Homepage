@@ -29,14 +29,14 @@ export const HeroSection = () => {
                   <span>END OF MONSOON SALE</span>
                 </span>
                 <span className="text-xs text-slate-300 font-medium">
-                  Flat 40% OFF Across All Programs
+                  Flat 15% OFF Across All Programs
                 </span>
                 {!remainingTime.isExpired && (
                   <button
                     onClick={openSaleModal}
                     className="text-amber-400 font-mono text-xs font-bold hover:underline ml-1 cursor-pointer flex items-center gap-1"
                   >
-                    <span>{isCouponApplied ? '✓ 40% Applied' : '⚡ Claim 40% OFF'}</span>
+                    <span>{isCouponApplied ? '✓ 15% Applied' : '⚡ Claim 15% OFF'}</span>
                   </button>
                 )}
               </div>
@@ -77,7 +77,7 @@ export const HeroSection = () => {
                   className="px-6 py-4 rounded-xl bg-zinc-900/90 hover:bg-zinc-850 border border-purple-500/40 hover:border-purple-400 text-purple-200 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-950/40 transition-all cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-amber-400" />
-                  <span>{isCouponApplied ? 'View Active Monsoon Grant' : '🌧️ End of Monsoon Sale (-40%)'}</span>
+                  <span>{isCouponApplied ? 'View Active Monsoon Grant' : '🌧️ End of Monsoon Sale (-15%)'}</span>
                 </button>
               </div>
             </ScrollReveal>

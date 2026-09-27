@@ -75,7 +75,7 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="#thunder-section" className="hover:text-amber-300 transition-colors flex items-center gap-1.5">
+                <a href="#courses" className="hover:text-amber-300 transition-colors flex items-center gap-1.5">
                   <span className="text-amber-400">⚡</span> Thunder 100 Days
                 </a>
               </li>

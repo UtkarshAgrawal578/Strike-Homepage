@@ -5,7 +5,7 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 
 export const TestimonialsSection = () => {
   return (
-    <section id="reviews" className="py-20 relative bg-zinc-950/70 border-b border-white/[0.06] overflow-hidden">
+    <section id="reviews" className="py-20 relative bg-[#000000] border-b border-white/[0.06] overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 

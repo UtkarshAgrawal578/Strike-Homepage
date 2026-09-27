@@ -50,7 +50,7 @@ export const Navbar = () => {
               <span>🌧️</span>
               <span className="font-bold">END OF MONSOON SALE</span>
               <span className="px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-bold text-[10px]">
-                {isCouponApplied ? '40% APPLIED' : '40% OFF'}
+                {isCouponApplied ? '15% APPLIED' : '15% OFF'}
               </span>
             </button>
           )}
@@ -76,7 +76,7 @@ export const Navbar = () => {
             className="px-3.5 py-2 rounded-xl text-xs font-mono text-purple-300 hover:text-white hover:bg-purple-500/10 border border-purple-500/30 transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Monsoon Voucher</span>
+            <span>Monsoon 15% Code</span>
           </button>
 
           <a
@@ -134,7 +134,7 @@ export const Navbar = () => {
               }}
               className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-purple-600 text-white font-bold text-sm flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>🌧️ Claim End of Monsoon Sale (-40%)</span>
+              <span>🌧️ Claim End of Monsoon Sale (-15%)</span>
             </button>
           </div>
         </div>

@@ -90,7 +90,7 @@ export const PricingSection = () => {
               <div>
                 <span className="text-xs text-slate-400 font-mono block">STRIKE VOUCHER PORTAL</span>
                 <span className="text-sm font-bold text-white">
-                  {isCouponApplied ? `"${couponCode}" Applied (40% OFF)` : 'Have a discount code?'}
+                  {isCouponApplied ? `"${couponCode}" Applied (15% OFF)` : 'Have a discount code?'}
                 </span>
               </div>
             </div>
@@ -99,7 +99,7 @@ export const PricingSection = () => {
               {isCouponApplied ? (
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-xl border border-emerald-500/30">
-                    40% Slashed!
+                    15% Slashed!
                   </span>
                   <button
                     onClick={removeCoupon}
@@ -112,7 +112,7 @@ export const PricingSection = () => {
                 <form onSubmit={handleApplyInputCoupon} className="flex items-center gap-1.5 w-full">
                   <input
                     type="text"
-                    placeholder="e.g. THUNDER40"
+                    placeholder="e.g. MONSOON15"
                     value={inputCode}
                     onChange={(e) => setInputCode(e.target.value)}
                     className="px-3 py-1.5 rounded-xl bg-black border border-zinc-700 text-xs font-mono text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500 w-32 uppercase"

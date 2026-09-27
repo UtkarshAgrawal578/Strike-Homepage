@@ -119,14 +119,14 @@ export const CourseCard = ({ course, onViewSyllabus }) => {
 
             {isCouponApplied ? (
               <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[11px] font-mono font-bold border border-emerald-500/30">
-                -40% APPLIED
+                -15% APPLIED
               </span>
             ) : (
               <button
                 onClick={openSaleModal}
                 className="text-[11px] font-mono text-amber-400 hover:text-amber-300 underline cursor-pointer"
               >
-                ⚡ Get 40% OFF
+                ⚡ Get 15% OFF
               </button>
             )}
           </div>

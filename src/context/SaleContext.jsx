@@ -7,16 +7,14 @@ const STORAGE_KEYS = {
 };
 
 const DEFAULT_DURATION_HOURS = 48;
-const COUPON_CODE = 'MONSOON40';
-const DISCOUNT_PERCENT = 40;
+const COUPON_CODE = 'MONSOON15';
+const DISCOUNT_PERCENT = 15;
 
 const SaleContext = createContext(null);
 
 export const SaleProvider = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isUnlocked, setIsUnlocked] = useState(() => {
-    return localStorage.getItem(STORAGE_KEYS.UNLOCKED) === 'true';
-  });
+  const [isUnlocked, setIsUnlocked] = useState(true);
   const [isCouponApplied, setIsCouponApplied] = useState(() => {
     return localStorage.getItem(STORAGE_KEYS.APPLIED) === 'true';
   });
@@ -102,7 +100,7 @@ export const SaleProvider = ({ children }) => {
   const unlockOffer = () => {
     setIsUnlocked(true);
     localStorage.setItem(STORAGE_KEYS.UNLOCKED, 'true');
-    showToast('🌧️ End of Monsoon Sale Unlocked! 40% Discount Ready');
+    showToast('🌧️ End of Monsoon Sale! 15% Discount Active');
   };
 
   const copyAndApplyCoupon = () => {
@@ -116,7 +114,7 @@ export const SaleProvider = ({ children }) => {
     setIsUnlocked(true);
     localStorage.setItem(STORAGE_KEYS.UNLOCKED, 'true');
     localStorage.setItem(STORAGE_KEYS.APPLIED, 'true');
-    showToast(`🎉 Coupon "${COUPON_CODE}" copied & 40% Monsoon discount applied!`);
+    showToast(`🎉 Coupon "${COUPON_CODE}" copied & 15% Monsoon discount applied!`);
   };
 
   const removeCoupon = () => {
