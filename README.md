@@ -4,10 +4,7 @@
 
 ---
 
-## 📺 Demo Video & Concept Overview
 
-> **Demo Video Link**: [Watch the STRIKE Walkthrough & Sale Experience Demo](https://youtu.be/your-demo-video-link-here)  
-> *(Replace the URL above with your hosted video link e.g. Loom, YouTube, or Google Drive)*
 
 ### 🧠 Thought Process & Point of View Behind the Sale Experience:
 1. **The Core Philosophy**:
