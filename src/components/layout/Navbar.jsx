@@ -7,8 +7,8 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { name: 'Why Us', href: '#why-choose-us' },
     { name: 'Courses', href: '#courses' },
-    { name: 'Thunder 100', href: '#thunder-section', badge: 'LIVE' },
     { name: 'Strike Plus', href: '#pricing' },
     { name: 'Coder Arena', href: '#terminal' },
     { name: 'Mentors', href: '#mentors' },
@@ -40,15 +40,15 @@ export const Navbar = () => {
             </div>
           </a>
 
-          {/* Flash Grant Discovery Chip */}
+          {/* End of Monsoon Flash Sale Discovery Chip */}
           {!remainingTime.isExpired && (
             <button
               onClick={openSaleModal}
-              className="hidden lg:flex items-center gap-2 ml-4 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/15 via-purple-500/15 to-cyan-500/15 border border-amber-500/40 hover:border-amber-400 text-xs text-amber-300 font-mono transition-all cursor-pointer group animate-pulse"
-              title="Click to view Thunder Flash Grant"
+              className="hidden lg:flex items-center gap-2 ml-4 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/15 via-purple-500/15 to-cyan-500/15 border border-amber-500/40 hover:border-amber-400 text-xs text-amber-300 font-mono transition-all cursor-pointer group animate-pulse"
+              title="Click to view End of Monsoon Sale"
             >
-              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span>⚡ THUNDER FLASH GRANT</span>
+              <span>🌧️</span>
+              <span className="font-bold">END OF MONSOON SALE</span>
               <span className="px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-bold text-[10px]">
                 {isCouponApplied ? '40% APPLIED' : '40% OFF'}
               </span>
@@ -65,11 +65,6 @@ export const Navbar = () => {
               className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition-colors relative flex items-center gap-1.5 cursor-pointer"
             >
               <span>{link.name}</span>
-              {link.badge && (
-                <span className="text-[9px] font-mono font-extrabold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                  {link.badge}
-                </span>
-              )}
             </button>
           ))}
         </nav>
@@ -81,7 +76,7 @@ export const Navbar = () => {
             className="px-3.5 py-2 rounded-xl text-xs font-mono text-purple-300 hover:text-white hover:bg-purple-500/10 border border-purple-500/30 transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Overdrive Terminal</span>
+            <span>Monsoon Voucher</span>
           </button>
 
           <a
@@ -101,7 +96,7 @@ export const Navbar = () => {
           <button
             onClick={openSaleModal}
             className="p-2 rounded-lg bg-amber-500/15 text-amber-400 border border-amber-500/40"
-            aria-label="Thunder sale"
+            aria-label="Monsoon sale"
           >
             <Zap className="w-4 h-4 fill-current" />
           </button>
@@ -127,11 +122,6 @@ export const Navbar = () => {
                 className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-left text-sm font-medium text-slate-200 flex items-center justify-between"
               >
                 <span>{link.name}</span>
-                {link.badge && (
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">
-                    {link.badge}
-                  </span>
-                )}
               </button>
             ))}
           </div>
@@ -142,10 +132,9 @@ export const Navbar = () => {
                 setMobileMenuOpen(false);
                 openSaleModal();
               }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-purple-600 text-white font-bold text-sm flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-purple-600 text-white font-bold text-sm flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Zap className="w-4 h-4" />
-              <span>Explore Thunder Batch Grant (-40%)</span>
+              <span>🌧️ Claim End of Monsoon Sale (-40%)</span>
             </button>
           </div>
         </div>

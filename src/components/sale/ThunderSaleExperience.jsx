@@ -15,7 +15,8 @@ import {
   Flame,
   CheckCircle,
   Clock,
-  Percent
+  Percent,
+  CloudRain
 } from 'lucide-react';
 
 export const ThunderSaleExperience = () => {
@@ -59,27 +60,27 @@ export const ThunderSaleExperience = () => {
         onClick={closeSaleModal}
       />
 
-      {/* Cyberpunk HUD Window */}
-      <div className="relative w-full max-w-4xl bg-[#0b0b0e] border border-purple-500/40 rounded-2xl sm:rounded-3xl shadow-2xl shadow-purple-950/80 overflow-hidden my-auto text-slate-100 z-10 animate-scaleUp">
+      {/* Monsoon HUD Window */}
+      <div className="relative w-full max-w-4xl bg-[#0b0b0e] border border-cyan-500/40 rounded-2xl sm:rounded-3xl shadow-2xl shadow-cyan-950/80 overflow-hidden my-auto text-slate-100 z-10 animate-scaleUp">
         {/* Glowing Top Ambient Beam */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 via-purple-500 to-cyan-400" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-400 via-purple-500 to-amber-400" />
         
         {/* Background Ambient Glows */}
-        <div className="absolute -top-32 -left-32 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-amber-600/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute -top-32 -left-32 w-80 h-80 bg-cyan-600/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Modal Header */}
         <div className="px-6 py-5 sm:px-8 border-b border-zinc-800 flex items-center justify-between relative bg-zinc-900/50 backdrop-blur-lg">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-purple-600 flex items-center justify-center text-black font-black shadow-lg shadow-purple-500/30 shrink-0">
-              <Zap className="w-5 h-5 fill-current text-slate-950" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-purple-500 to-amber-400 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/30 shrink-0">
+              <CloudRain className="w-5 h-5 text-slate-950" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-display font-black text-base sm:text-lg tracking-wide text-white">
-                  THUNDER OVERDRIVE SALE
+                  END OF MONSOON SALE
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold border border-amber-500/30 animate-pulse">
+                <span className="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-mono font-bold border border-cyan-500/30 animate-pulse">
                   LIMITED FLASH EVENT
                 </span>
               </div>
@@ -104,12 +105,12 @@ export const ThunderSaleExperience = () => {
           {!isUnlocked && !remainingTime.isExpired ? (
             <div>
               <div className="text-center max-w-xl mx-auto mb-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 text-xs font-mono mb-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 text-xs font-mono mb-3">
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  <span>INTERACTIVE OVERDRIVE ACCESS</span>
+                  <span>END OF MONSOON SPECIAL GRANT</span>
                 </div>
                 <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-white mb-2">
-                  Unlock <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-400">40% Instant Grant</span> on All Plans
+                  Unlock <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-amber-300">40% Monsoon Discount</span> on All Plans
                 </h3>
                 <p className="text-sm text-slate-300">
                   Connect the 3 core pillars of modern engineering to synthesize your verified VIP coupon code and discounted tuition.
@@ -124,18 +125,18 @@ export const ThunderSaleExperience = () => {
               {/* Expired vs Active Banner */}
               {remainingTime.isExpired ? (
                 <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 text-center">
-                  <p className="font-bold text-rose-300 text-base">⚠️ This Thunder Flash Sale Has Ended</p>
+                  <p className="font-bold text-rose-300 text-base">⚠️ The End of Monsoon Sale Has Ended</p>
                   <p className="text-xs text-rose-400/80 mt-1">The countdown has reached zero. Standard pricing has been restored.</p>
                 </div>
               ) : (
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-5 rounded-2xl bg-gradient-to-br from-purple-950/60 via-zinc-900/90 to-indigo-950/50 border border-purple-500/30">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-5 rounded-2xl bg-gradient-to-br from-cyan-950/50 via-zinc-900/90 to-purple-950/50 border border-cyan-500/30">
                   <div>
                     <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold border border-emerald-500/20 mb-2">
                       <CheckCircle className="w-3.5 h-3.5" />
                       <span>OFFER GRANTED • {discountPercentage}% OFF UNLOCKED</span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-display font-black text-white">
-                      Flat <span className="text-amber-300">40% Instant Discount</span>
+                      Flat <span className="text-amber-300">40% Monsoon Discount</span>
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1">
                       Applicable on <strong className="text-white">Strike Ultra</strong>, <strong className="text-white">Strike Plus</strong> &amp; <strong className="text-white">Thunder 100 Batch</strong>.
@@ -160,7 +161,7 @@ export const ThunderSaleExperience = () => {
                     <Percent className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400 uppercase tracking-wider font-mono">Verified Coupon Code</p>
+                    <p className="text-xs text-slate-400 uppercase tracking-wider font-mono">Verified Monsoon Coupon</p>
                     <div className="flex items-center gap-2 mt-0.5">
                       <span className="font-mono text-xl sm:text-2xl font-black text-amber-300 tracking-wider">
                         {couponCode}
@@ -217,7 +218,7 @@ export const ThunderSaleExperience = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {/* Card 1 */}
                   <div
-                    onClick={() => handleApplyToPlan('thunder-section')}
+                    onClick={() => handleApplyToPlan('courses')}
                     className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-amber-500/40 transition-all cursor-pointer group"
                   >
                     <div className="flex items-center justify-between mb-1">
@@ -272,7 +273,7 @@ export const ThunderSaleExperience = () => {
               <div className="p-4 rounded-xl bg-black border border-zinc-800">
                 <p className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
                   <Gift className="w-3.5 h-3.5 text-amber-400" />
-                  Additional Bonuses Included Free With Thunder Grant:
+                  Additional Bonuses Included Free With Monsoon Grant:
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-300">
                   <div className="flex items-center gap-2">

@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const STORAGE_KEYS = {
-  END_TIME: 'strike_thunder_sale_end_time',
-  UNLOCKED: 'strike_thunder_sale_unlocked',
-  APPLIED: 'strike_thunder_sale_applied',
+  END_TIME: 'strike_monsoon_sale_end_time',
+  UNLOCKED: 'strike_monsoon_sale_unlocked',
+  APPLIED: 'strike_monsoon_sale_applied',
 };
 
 const DEFAULT_DURATION_HOURS = 48;
-const COUPON_CODE = 'THUNDER40';
+const COUPON_CODE = 'MONSOON40';
 const DISCOUNT_PERCENT = 40;
 
 const SaleContext = createContext(null);
@@ -74,11 +74,11 @@ export const SaleProvider = ({ children }) => {
     return () => clearInterval(interval);
   }, [targetEndTime, calculateRemaining]);
 
-  // ALWAYS open the sale popup whenever the webpage is loaded / refreshed
+  // ALWAYS open the End of Monsoon Sale popup whenever the webpage is loaded / refreshed
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsModalOpen(true);
-    }, 700);
+    }, 600);
     return () => clearTimeout(timer);
   }, []);
 
@@ -102,12 +102,12 @@ export const SaleProvider = ({ children }) => {
   const unlockOffer = () => {
     setIsUnlocked(true);
     localStorage.setItem(STORAGE_KEYS.UNLOCKED, 'true');
-    showToast('⚡ Thunder Overdrive Activated! 40% Discount Ready');
+    showToast('🌧️ End of Monsoon Sale Unlocked! 40% Discount Ready');
   };
 
   const copyAndApplyCoupon = () => {
     if (remainingTime.isExpired) {
-      showToast('⚠️ This offer window has expired and cannot be applied.');
+      showToast('⚠️ The End of Monsoon Sale window has expired.');
       return;
     }
 
@@ -116,7 +116,7 @@ export const SaleProvider = ({ children }) => {
     setIsUnlocked(true);
     localStorage.setItem(STORAGE_KEYS.UNLOCKED, 'true');
     localStorage.setItem(STORAGE_KEYS.APPLIED, 'true');
-    showToast(`🎉 Coupon "${COUPON_CODE}" copied & 40% discount applied!`);
+    showToast(`🎉 Coupon "${COUPON_CODE}" copied & 40% Monsoon discount applied!`);
   };
 
   const removeCoupon = () => {

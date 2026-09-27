@@ -4,7 +4,7 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { HeroSection } from './components/hero/HeroSection';
 import { PlacementMarquee } from './components/hero/PlacementMarquee';
-import { ThunderSpotlight } from './components/thunder/ThunderSpotlight';
+import { WhyChooseUs } from './components/why-us/WhyChooseUs';
 import { CourseGrid } from './components/courses/CourseGrid';
 import { MentorSpotlight } from './components/mentor/MentorSpotlight';
 import { PricingSection } from './components/pricing/PricingSection';
@@ -12,7 +12,6 @@ import { TestimonialsSection } from './components/reviews/TestimonialsSection';
 import { FAQSection } from './components/faq/FAQSection';
 import { ThunderSaleExperience } from './components/sale/ThunderSaleExperience';
 import { FloatingSaleDock } from './components/sale/FloatingSaleDock';
-import { JudgeTestControls } from './components/sale/JudgeTestControls';
 import { Toast } from './components/ui/Toast';
 
 export function App() {
@@ -26,7 +25,7 @@ export function App() {
         <main className="flex-1">
           <HeroSection />
           <PlacementMarquee />
-          <ThunderSpotlight />
+          <WhyChooseUs />
           <CourseGrid />
           <MentorSpotlight />
           <PricingSection />
@@ -37,10 +36,9 @@ export function App() {
         {/* Footer */}
         <Footer />
 
-        {/* Sale Experience Overlays & Floating Hubs */}
+        {/* End of Monsoon Sale Popup & Floating Dock */}
         <ThunderSaleExperience />
         <FloatingSaleDock />
-        <JudgeTestControls />
         <Toast />
       </div>
     </SaleProvider>

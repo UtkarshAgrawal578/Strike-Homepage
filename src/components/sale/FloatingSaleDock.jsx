@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSale } from '../../context/SaleContext';
-import { Zap, Sparkles, Clock, AlertTriangle } from 'lucide-react';
+import { Sparkles, Clock, AlertTriangle } from 'lucide-react';
 
 export const FloatingSaleDock = () => {
   const {
@@ -20,13 +20,13 @@ export const FloatingSaleDock = () => {
         className={`group relative flex items-center gap-3 px-4 py-2.5 rounded-full border transition-all duration-300 shadow-2xl backdrop-blur-xl cursor-pointer ${
           remainingTime.isExpired
             ? 'bg-zinc-900/90 border-zinc-700 text-slate-400 hover:border-zinc-600'
-            : 'bg-zinc-900/90 hover:bg-zinc-850 border-amber-500/50 hover:border-amber-400 text-white shadow-amber-500/20 hover:scale-105'
+            : 'bg-zinc-900/90 hover:bg-zinc-850 border-cyan-500/50 hover:border-cyan-400 text-white shadow-cyan-500/20 hover:scale-105'
         }`}
-        aria-label="Open Thunder Sale offer"
+        aria-label="Open End of Monsoon Sale offer"
       >
         {/* Pulsing Aura */}
         {!remainingTime.isExpired && (
-          <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-amber-500 to-purple-500 opacity-40 blur-sm group-hover:opacity-75 transition duration-500 animate-pulse" />
+          <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-amber-500 opacity-40 blur-sm group-hover:opacity-75 transition duration-500 animate-pulse" />
         )}
 
         <div className="relative flex items-center gap-2.5">
@@ -35,13 +35,13 @@ export const FloatingSaleDock = () => {
             className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs ${
               remainingTime.isExpired
                 ? 'bg-zinc-800 text-slate-400'
-                : 'bg-gradient-to-tr from-amber-400 to-orange-500 text-black shadow-md'
+                : 'bg-gradient-to-tr from-cyan-400 to-purple-500 text-black shadow-md'
             }`}
           >
             {remainingTime.isExpired ? (
               <AlertTriangle className="w-3.5 h-3.5 text-slate-400" />
             ) : (
-              <Zap className="w-4 h-4 fill-current" />
+              <span className="text-xs">🌧️</span>
             )}
           </div>
 
@@ -58,11 +58,11 @@ export const FloatingSaleDock = () => {
                   </>
                 ) : isUnlocked ? (
                   <>
-                    <span className="text-amber-300 font-mono">40% CODE READY</span>
+                    <span className="text-cyan-300 font-mono">40% MONSOON CODE READY</span>
                   </>
                 ) : (
                   <>
-                    <span className="text-amber-300 font-mono">⚡ 40% THUNDER SURGE</span>
+                    <span className="text-cyan-300 font-mono">🌧️ 40% MONSOON SALE</span>
                   </>
                 )}
               </span>
@@ -80,7 +80,7 @@ export const FloatingSaleDock = () => {
             )}
           </div>
 
-          <span className="hidden sm:inline-block text-[11px] font-semibold text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded-full border border-purple-500/30">
+          <span className="hidden sm:inline-block text-[11px] font-semibold text-cyan-300 bg-cyan-500/20 px-2 py-0.5 rounded-full border border-cyan-500/30">
             {remainingTime.isExpired ? 'View Details' : 'Claim Grant →'}
           </span>
         </div>

@@ -25,18 +25,18 @@ export const HeroSection = () => {
             <ScrollReveal delay={0.1}>
               <div className="inline-flex flex-wrap items-center gap-2 p-1.5 pr-4 rounded-full bg-zinc-900/90 border border-purple-500/30 backdrop-blur-md shadow-lg shadow-black/50">
                 <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-mono font-black text-xs">
-                  <Zap className="w-3.5 h-3.5 fill-current" />
-                  THUNDER 100 DAYS LIVE
+                  <span>🌧️</span>
+                  <span>END OF MONSOON SALE</span>
                 </span>
                 <span className="text-xs text-slate-300 font-medium">
-                  Live Interactive Batch Enrolling Now
+                  Flat 40% OFF Across All Programs
                 </span>
                 {!remainingTime.isExpired && (
                   <button
                     onClick={openSaleModal}
                     className="text-amber-400 font-mono text-xs font-bold hover:underline ml-1 cursor-pointer flex items-center gap-1"
                   >
-                    <span>{isCouponApplied ? '✓ 40% Applied' : '⚡ 40% Grant'}</span>
+                    <span>{isCouponApplied ? '✓ 40% Applied' : '⚡ Claim 40% OFF'}</span>
                   </button>
                 )}
               </div>
@@ -64,11 +64,11 @@ export const HeroSection = () => {
             <ScrollReveal delay={0.4}>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                 <a
-                  href="#thunder-section"
-                  className="px-7 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-purple-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-black text-base shadow-xl shadow-purple-500/20 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5"
+                  href="#courses"
+                  className="px-7 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-purple-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-black text-base shadow-xl shadow-purple-500/20 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 cursor-pointer"
                 >
                   <Zap className="w-5 h-5 fill-current text-amber-300" />
-                  <span>Explore Thunder 100 Days</span>
+                  <span>Explore All Courses</span>
                   <ArrowRight className="w-4 h-4 stroke-[3]" />
                 </a>
 
@@ -77,7 +77,7 @@ export const HeroSection = () => {
                   className="px-6 py-4 rounded-xl bg-zinc-900/90 hover:bg-zinc-850 border border-purple-500/40 hover:border-purple-400 text-purple-200 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-950/40 transition-all cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-amber-400" />
-                  <span>{isCouponApplied ? 'View Active 40% Grant' : '⚡ Claim Thunder Sale (-40%)'}</span>
+                  <span>{isCouponApplied ? 'View Active Monsoon Grant' : '🌧️ End of Monsoon Sale (-40%)'}</span>
                 </button>
               </div>
             </ScrollReveal>
